@@ -1,0 +1,25 @@
+/*
+.q-field--dense .q-field__control, .q-field--dense .q-field__marginal {
+    height: 32px;
+}
+
+.q-field--auto-height.q-field--dense .q-field__control, .q-field--auto-height.q-field--dense .q-field__native {
+    min-height: 32px;
+}
+
+.q-field--labeled.q-field--dense .q-field__native, .q-field--labeled.q-field--dense .q-field__prefix, .q-field--labeled.q-field--dense .q-field__suffix {
+    padding-top: 8px;
+    padding-bottom: 2px;
+}
+ */
+
+.btn {
+    height:32px;
+    min-height: 32px;
+    text-transform: none;
+}
+
+.drawer__body {
+    padding: 0px 16px 16px 16px;
+}
+

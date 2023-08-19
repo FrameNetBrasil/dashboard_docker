@@ -1,0 +1,4 @@
+# Log Files #
+################
+./server/logs/apache2/error.log
+./server/logs/apache2/other_vhosts_access.log
