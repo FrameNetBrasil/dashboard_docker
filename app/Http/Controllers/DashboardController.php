@@ -11,7 +11,9 @@ class DashboardController extends Controller
     {
         session(['currentController' => "Reinventa"]);
         $this->data->frame2 = DashboardService::frame2();
-        ddump($this->data->frame2);
+        $this->data->audition = DashboardService::audition();
+        $this->data->multi30k = DashboardService::multi30k();
+        ddump($this->data->multi30k);
 
 
         return $this->render("dashboard/main");

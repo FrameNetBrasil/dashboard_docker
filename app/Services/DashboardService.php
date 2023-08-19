@@ -348,10 +348,6 @@ class DashboardService extends AppService
     public static function multi30k(): array
     {
         $result = [];
-//        $sentences = function ($query) {
-//            self::getSentencesAudition($query);
-//        };
-        mdump(ObjectSentenceMMModel::getClassMap()->getAssociationsNames());
         $count = ObjectSentenceMMModel::getCriteria()
             ->where('sentenceMM.sentence.documents.corpus.entry', 'IN', [
                 'crp_oficina_com_sentenca_1',
@@ -375,10 +371,9 @@ class DashboardService extends AppService
         $result['framesImage'] = $count[0]['n3'];
         $result['fesImage'] = $count[0]['n4'];
         $result['lusImage'] = 0;
-        mdump('2');
 
         ////
-        $dbDaisy = PersistenceManager::$capsule->getConnection('daisy');
+        $dbDaisy = PersistenceManager::$capsule->connection('daisy');
         // PTT
         $cmd = "select count(*) as n from flickr30ksentence where idDocumentFNBr = 1054 ";
         $count = $dbDaisy->select($cmd, []);
@@ -410,7 +405,7 @@ where f.idDocumentFNBr = 663";
         $count = $dbDaisy->select($cmd, []);
         $result['enoFrames'] = $count[0]->n;
         // Chart
-        $dbFnbr = PersistenceManager::$capsule->getConnection('fnbr');
+        $dbFnbr = PersistenceManager::$capsule->connection('fnbr');
         $cmd = "SELECT month(tlDateTime) m,year(tlDateTime) y, count(*) n
          FROM fnbr_db.timeline t
 where tablename='objectsentencemm'
@@ -418,7 +413,6 @@ group by month(tlDateTime),year(tlDateTime)";
         $rows = $dbFnbr->select($cmd, []);
         $chart = [];
         $sum = 0;
-        mdump($rows);
         foreach($rows as $row) {
             $sum += $row['n'];
             $chart[] = [
@@ -428,7 +422,6 @@ group by month(tlDateTime),year(tlDateTime)";
         }
         $chart[count($chart) - 1]['value'] = $result['bbox'];
         $result['chart'] = $chart;
-
         return $result;
     }
 
