@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "lib": ["esnext", "dom"],
+    "types": ["@types/node", "@types/ziggy-js"],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "outDir": "./public/web"
+  },
+  "typeRoots": ["./node_modules/@types", "./src/types"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.d.ts",
+    "./src/**/*.vue"
+  ],
+  "exclude": ["node_modules", "public"]
+}
