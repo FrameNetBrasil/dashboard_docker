@@ -20,8 +20,9 @@
 <body
         hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
 >
-<div class="w-screen h-screen">
-    <header class="wt-header w-full">
+<div id="loader" class="wt-loader"></div>
+<div class="h-screen">
+    <header class="wt-header w-full" style="position: fixed;top: 0;">
         <div class="navbar">
             <div class="flex-1">
                 <img src="/images/fnbr_logo_header.png" height="36" width="36" style="margin:3px">
@@ -50,7 +51,7 @@
         </div>
     </header>
 
-    <section class="w-full">
+    <section class="w-full p-2" style="margin-top:64px">
         {{ $slot }}
     </section>
 
@@ -61,6 +62,15 @@
     }}
 
     <script>
+        document.onreadystatechange = function () {
+            if (document.readyState !== "complete") {
+                document.querySelector("body").style.visibility = "hidden";
+                document.querySelector("#loader").style.visibility = "visible";
+            } else {
+                document.querySelector("#loader").style.display = "none";
+                document.querySelector("body").style.visibility = "visible";
+            }
+        };
         document.body.addEventListener("notify", function (evt) {
             window.notify(evt.detail.type, evt.detail.message)
         })

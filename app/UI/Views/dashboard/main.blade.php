@@ -2,7 +2,7 @@
 $language = session('currentLanguage')->language;
 @endphp
 <x-wt::indexLayout :data="$data">
-    <div class="w-full p-2">
+    <div class="w-full">
         <div class="dashboard-title">{{ __("dashboard.subcorpus") }}: Frame2</div>
         @include('dashboard.subcorporaFrame2')
 
