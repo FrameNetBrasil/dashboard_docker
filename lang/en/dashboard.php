@@ -15,7 +15,7 @@ return [
     'frames' => 'Distinct Frames',
     'fes' => 'Distinct Frame Elements',
     'lus' => 'Distinct Lexical Units',
-    'cvs' => 'Tipos de Objetos distintos',
+    'cvs' => 'Distinct Object Types',
     'avgSentence' => 'Average per sentence',
     'avgSentenceUL' => 'Lexical Units',
     'avgBBox' => 'Average time per object',
@@ -26,4 +26,14 @@ return [
     'ptoFrame' => 'Distintos Frames - LOME',
     'enoSentences' => 'Sentences',
     'enoFrame' => 'Distinct Frames - LOME',
+    'boxesPerMonth' => 'Annotated Bounding Boxes / Month',
+    'profileAge' => 'Age',
+    'profileAgeLabels' => ['18-19', '20-29', '30-39', '40-49', '50-59'],
+    'profileSchooling' => 'Schooling',
+    'profileSchoolingLabels' => ['Doctorate Degree','Masters Degree','Bachelors Degree','University student'],
+    'profileEthnicity' => 'Ethnicity',
+    'profileEthnicityLabels' => ['Caucasian','Native-Brazilian','Black','Brown','Not informed'],
+    'profileGender' => 'Gender',
+    'profileGenderLabels' => ['Man','Woman','Non-binary','Non-binary, transgender, agender, non-conforming'],
+
 ];

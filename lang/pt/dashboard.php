@@ -26,4 +26,15 @@ return [
     'ptoFrame' => 'Frames distintos - LOME',
     'enoSentences' => 'Sentenças',
     'enoFrame' => 'Frames distintos - LOME',
+    'boxesPerMonth' => 'Bounding Boxes Anotadas / mês',
+    'profileAge' => 'Idade',
+    'profileAgeLabels' => ['18-19', '20-29', '30-39', '40-49', '50-59'],
+    'profileSchooling' => 'Escolaridade',
+    'profileSchoolingLabels' => ['Doutorado completo', 'Mestrado completo', 'Superior completo', 'Superior em curso'],
+    'profileEthnicity' => 'Etnia',
+    'profileEthnicityLabels' => ['Branco', 'Indígena', 'Negro', 'Pardo', 'Prefiro não informar'],
+    'profileGender' => 'Gênero',
+    'profileGenderLabels' => ['Homem', 'Mulher', 'Não-binário', 'Não-binário, Transgênero, Agênero, Gênero não-conformista'],
+
+
 ];
