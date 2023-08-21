@@ -34,7 +34,6 @@ class Data
         }
         App::setLocale($language->language);
         $data['idLanguage'] = (int)$idLanguage;
-        ddump(App::currentLocale());
         $auth = new AuthService();
             session('isAdmin') ?? session(['isAdmin' => $auth->checkAccess('ADMIN') ? 'true' : 'false']);
             session('isMaster') ?? session(['isMaster' => $auth->checkAccess('MASTER') ? 'true' : 'false']);

@@ -7,16 +7,16 @@ $genderLabels = __('dashboard.profileGenderLabels');
 
 @endphp
 <div class="flex flex-row gap-x-2 flex-wrap">
-<div class="chart-container" style="position: relative; height:40vh; width:24vw">
+<div class="chart-container" style="position: relative; height:40vh; width:360px">
     <canvas id="profileAge"></canvas>
 </div>
-<div class="chart-container" style="position: relative; height:40vh; width:24vw">
+<div class="chart-container" style="position: relative; height:40vh; width:360px">
     <canvas id="profileSchooling"></canvas>
 </div>
-<div class="chart-container" style="position: relative; height:40vh; width:24vw">
+<div class="chart-container" style="position: relative; height:40vh; width:360px">
     <canvas id="profileEthnicity"></canvas>
 </div>
-<div class="chart-container" style="position: relative; height:40vh; width:24vw">
+<div class="chart-container" style="position: relative; height:40vh; width:360px">
     <canvas id="profileGender"></canvas>
 </div>
 </div>

@@ -11,6 +11,7 @@ use App\Models\ObjectMMModel;
 use App\Models\ObjectSentenceMMModel;
 use App\Models\SentenceModel;
 use App\Models\UserModel;
+use Illuminate\Support\Facades\App;
 use Orkester\Persistence\Criteria\Criteria;
 use Orkester\Persistence\Enum\Join;
 use Orkester\Persistence\PersistenceManager;
@@ -253,7 +254,8 @@ class DashboardService extends AppService
         $counts = AnnotationSetModel::getCriteria()
             ->where('sentence.idSentence', 'IN', $sentences)
             ->get(["count(idAnnotationSet) as a", "count(distinct idSentence) as s"]);
-        $result['avgAS']= number_format($counts[0]['a'] / $counts[0]['s'], 3, '.', '');
+        $decimal = (App::currentLocale() == 'pt') ? ',' : '.';
+        $result['avgAS']= number_format($counts[0]['a'] / $counts[0]['s'], 3, $decimal, '');
         $count = ObjectFrameMMModel::getCriteria()
             ->where('objectMM.documentMM.document.corpus.entry', 'IN', ['crp_pedro_pelo_mundo'])
             ->groupBy("idObjectMM")
@@ -263,7 +265,7 @@ class DashboardService extends AppService
             $sum += $row['n'];
         }
         $avg = ($sum / count($count)) * 0.040; // 40 ms por frame
-        $result['avgDuration'] = number_format($avg, 3, '.', '');;
+        $result['avgDuration'] = number_format($avg, 3, $decimal, '');
         return $result;
     }
 
@@ -327,7 +329,8 @@ class DashboardService extends AppService
         $counts = AnnotationSetModel::getCriteria()
             ->where('sentence.idSentence', 'IN', $sentences)
             ->get(["count(idAnnotationSet) as a", "count(distinct idSentence) as s"]);
-        $result['avgAS']= number_format($counts[0]['a'] / $counts[0]['s'], 3, '.', '');
+        $decimal = (App::currentLocale() == 'pt') ? ',' : '.';
+        $result['avgAS']= number_format($counts[0]['a'] / $counts[0]['s'], 3, $decimal, '');
         $count = ObjectFrameMMModel::getCriteria()
             ->where('objectMM.documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset'])
             ->groupBy("idObjectMM")
@@ -337,7 +340,8 @@ class DashboardService extends AppService
             $sum += $row['n'];
         }
         $avg = ($sum / count($count)) * 0.040; // 40 ms por frame
-        $result['avgDuration'] = number_format($avg, 3, '.', '');;
+        $result['avgDuration'] = number_format($avg, 3, $decimal, '');
+        ddump($result);
         return $result;
     }
 
