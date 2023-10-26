@@ -37,13 +37,15 @@ class OrkesterServiceProvider extends ServiceProvider
 
         DB::enableQueryLog();
         DB::listen(function ($query) {
-            Log::channel('stack')->info(
-                $query->sql,
-                [
-                    'bindings' => $query->bindings,
-                    'time' => $query->time
-                ]
-            );
+            if (env('LOG_TRACE_PORT') != '0') {
+                Log::channel('stack')->info(
+                    $query->sql,
+                    [
+                        'bindings' => $query->bindings,
+                        'time' => $query->time
+                    ]
+                );
+            }
         });
     }
 

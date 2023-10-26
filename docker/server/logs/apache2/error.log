@@ -66,3 +66,8 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.29.0.2. Set the 'ServerName' directive globally to suppress this message
 [Mon Aug 21 12:56:20.735626 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.1.0 configured -- resuming normal operations
 [Mon Aug 21 12:56:20.735681 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.112.2. Set the 'ServerName' directive globally to suppress this message
+[Mon Aug 21 14:03:45.935137 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.1.0 configured -- resuming normal operations
+[Mon Aug 21 14:03:45.935173 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Mon Sep 18 09:22:28.148736 2023] [authz_core:error] [pid 19] [client 146.190.64.200:41162] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Oct 08 23:07:25.229919 2023] [authz_core:error] [pid 19] [client 139.144.150.8:45014] AH01630: client denied by server configuration: /var/www/html/public/server-status

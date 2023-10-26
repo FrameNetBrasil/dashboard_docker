@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LanguageModel;
 use App\Services\DashboardService;
+use App\Services\McGovernService;
 
 class DashboardController extends Controller
 {
@@ -23,6 +24,13 @@ class DashboardController extends Controller
         $language = (object)LanguageModel::one(['language', '=', $lang], ['idLanguage', 'language']);
         session(['currentLanguage' => $language]);
         return redirect("/");
+    }
+
+    public function mcgovern()
+    {
+        session(['currentController' => "McGovern"]);
+        $this->data->mcgovern = McGovernService::dashboard();
+        return $this->render("dashboard/mcgovern");
     }
 }
 

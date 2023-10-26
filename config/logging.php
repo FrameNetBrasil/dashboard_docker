@@ -54,7 +54,8 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single', 'trace'],
+            //'channels' => ['single', 'trace'],
+            'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
 

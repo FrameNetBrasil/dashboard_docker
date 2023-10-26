@@ -279,7 +279,8 @@ class DashboardService extends AppService
             ->distinct()
             ->select("idSentence")
             ->where('documents.corpus.entry', 'IN', [
-                'crp_curso_dataset'
+                'crp_curso_dataset',
+                'crp_hoje_eu_nao_quero'
             ]);
 
     }
@@ -296,7 +297,7 @@ class DashboardService extends AppService
         $result['sentences'] = $count[0]['n'];
         $count = ObjectMMModel::getCriteria()
             ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset'])
+            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->get("count(distinct idObjectMM) as n");
         $result['bbox'] = $count[0]['n'];
         $count1 = AnnotationSetModel::getCriteria()
@@ -304,7 +305,7 @@ class DashboardService extends AppService
             ->get("count(distinct lu.idFrame) as n");
         $count2 = ObjectMMModel::getCriteria()
             ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset'])
+            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->get("count(distinct frameElement.idFrame) as n");
         $result['framesText'] = $count1[0]['n'];
         $result['framesBBox'] = $count2[0]['n'];
@@ -313,7 +314,7 @@ class DashboardService extends AppService
             ->get("count(distinct frameElement.idFrameElement) as n");
         $count2 = ObjectMMModel::getCriteria()
             ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset'])
+            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->get("count(distinct idFrameElement) as n");
         $result['fesText'] = $count1[0]['n'];
         $result['fesBBox'] = $count2[0]['n'];
@@ -322,7 +323,7 @@ class DashboardService extends AppService
             ->get("count(distinct lu.idLU) as n");
         $count2 = ObjectMMModel::getCriteria()
             ->where('idLU', 'IS', 'NOT NULL')
-            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset'])
+            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->get("count(distinct idLU) as n");
         $result['lusText'] = $count1[0]['n'];
         $result['lusBBox'] = $count2[0]['n'];
@@ -332,7 +333,7 @@ class DashboardService extends AppService
         $decimal = (App::currentLocale() == 'pt') ? ',' : '.';
         $result['avgAS']= number_format($counts[0]['a'] / $counts[0]['s'], 3, $decimal, '');
         $count = ObjectFrameMMModel::getCriteria()
-            ->where('objectMM.documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset'])
+            ->where('objectMM.documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->groupBy("idObjectMM")
             ->get("count(*) as n");
         $sum = 0;

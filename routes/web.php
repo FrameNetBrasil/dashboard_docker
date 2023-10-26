@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FrameController;
-use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/', 'main');
     Route::get('/language/{lang}', 'language');
+    Route::get('/mcgovern', 'mcgovern');
 });
