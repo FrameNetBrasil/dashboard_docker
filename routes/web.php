@@ -18,4 +18,5 @@ Route::controller(DashboardController::class)->group(function () {
     Route::get('/', 'main');
     Route::get('/language/{lang}', 'language');
     Route::get('/mcgovern', 'mcgovern');
+    Route::get('/gt', 'gt');
 });

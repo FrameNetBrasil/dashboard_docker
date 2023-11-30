@@ -6,6 +6,9 @@ $language = session('currentLanguage')->language;
         <div class="dashboard-title">Frames</div>
         @include('dashboard.mcgovernFrame')
 
+        <div class="dashboard-title">Qualia</div>
+        @include('dashboard.mcgovernQualia')
+
         <div class="dashboard-title">Annotation</div>
         @include('dashboard.mcgovernAnnotation')
 
