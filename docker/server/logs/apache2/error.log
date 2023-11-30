@@ -71,3 +71,6 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Mon Aug 21 14:03:45.935173 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 [Mon Sep 18 09:22:28.148736 2023] [authz_core:error] [pid 19] [client 146.190.64.200:41162] AH01630: client denied by server configuration: /var/www/html/public/server-status
 [Sun Oct 08 23:07:25.229919 2023] [authz_core:error] [pid 19] [client 139.144.150.8:45014] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Oct 29 01:31:02.557476 2023] [core:notice] [pid 1] AH00052: child pid 530 exit signal Broken pipe (13)
+[Mon Nov 13 13:49:43.014033 2023] [core:notice] [pid 1] AH00052: child pid 749 exit signal Broken pipe (13)
+[Sat Nov 25 09:13:10.602787 2023] [core:notice] [pid 1] AH00052: child pid 889 exit signal Broken pipe (13)

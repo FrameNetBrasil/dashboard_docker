@@ -22,8 +22,21 @@ class McGovernService extends AppService
 {
     public static function dashboard(): array
     {
+        $database ??= config('database.default');
         $cmd = <<<HERE
-        select e.idEntity2 idEntity, count(distinct f.idFrame) f, count(distinct lu.idLU) l
+        select st.entry domain, count(distinct f.idFrame) f
+from entityrelation e
+join frame f on (e.idEntity1 = f.idEntity)
+join semantictype st on (e.idEntity2 = st.idEntity)
+where st.entry in ('sty_fd_health','sty_fd_violence')
+group by st.entry
+            
+HERE;
+        $query = DB::connection($database)->select($cmd);
+        $frames = collect($query)->keyBy('domain')->all();
+        ddump($frames);
+        $cmd = <<<HERE
+        select e.idEntity2 idEntity, count(distinct lu.idLU) l
 from entityrelation e
 join frame f on (e.idEntity1 = f.idEntity)
 join lu on (lu.idFrame = f.idFrame)
@@ -31,10 +44,24 @@ where identity2 in (1550220,1554179)
 group by e.idEntity2
             
 HERE;
-        $database ??= config('database.default');
         $query = DB::connection($database)->select($cmd);
-        $frames = collect($query)->keyBy('idEntity')->all();
-ddump($frames);
+        $lus = collect($query)->keyBy('idEntity')->all();
+//ddump($lus);
+        $cmd = <<<HERE
+select count(distinct d.idDocument) d,count(distinct ds.idSentence) s,count(distinct f.idFrame) f,count(distinct lu.idLU) l,count(distinct a.idSentence) a, count(distinct a.idAnnotationSet) an
+from corpus c
+join document d on (d.idCorpus = c.idCorpus)
+join document_sentence ds on (ds.idDocument = d.idDocument)
+left join annotationset a on (ds.idSentence = a.idSentence)
+left join lu on (a.idEntityRelated = lu.idEntity)
+left join frame f on (lu.idFrame = f.idFrame)
+where c.idcorpus in (153,155);
+            
+HERE;
+        $query = DB::connection('internal')->select($cmd);
+        //$annoSIH = collect($query)->keyBy('entry')->all();
+        $annoSIH = $query;
+//        ddump($annoSIH);
         $cmd = <<<HERE
 select c.entry, count(distinct d.idDocument) d,count(distinct ds.idSentence) s,count(distinct f.idFrame) f,count(distinct lu.idLU) l,count(distinct a.idSentence) a, count(distinct a.idAnnotationSet) an
 from corpus c
@@ -43,29 +70,76 @@ join document_sentence ds on (ds.idDocument = d.idDocument)
 left join annotationset a on (ds.idSentence = a.idSentence)
 left join lu on (a.idEntityRelated = lu.idEntity)
 left join frame f on (lu.idFrame = f.idFrame)
-where c.idcorpus in (153,154)
+where c.idcorpus in (154)
 group by c.entry;
             
 HERE;
         $query = DB::connection('internal')->select($cmd);
-        $anno = collect($query)->keyBy('entry')->all();
+        $annoSINAN = collect($query)->keyBy('entry')->all();
+//        ddump($annoSINAN);
+
+        $cmd = <<<HERE
+select count(*) total
+from entityrelation r
+join lu on (r.idEntity1 = lu.idEntity)    
+join frame f on (lu.idFrame = f.idFrame)
+join entityrelation rst on (f.idEntity = rst.idEntity1)
+join semantictype st on (rst.idEntity2 = st.idEntity)
+where st.entry in ('sty_fd_health','sty_fd_violence')
+and (r.idRelationType in (33,34,35,36,215))
+           
+HERE;
+        $query = DB::connection('fnbr')->select($cmd);
+        //$annoSIH = collect($query)->keyBy('entry')->all();
+        $qualia = $query;
+
+        $cmd = <<<HERE
+select count(*) total
+from entityrelation r
+join lu on (r.idEntity1 = lu.idEntity)
+join frame f on (lu.idFrame = f.idFrame)
+join entityrelation rst on (f.idEntity = rst.idEntity1)
+join semantictype st on (rst.idEntity2 = st.idEntity)
+join qualia q on (r.idEntity3 = q.idEntity)
+where st.entry in ('sty_fd_health','sty_fd_violence')
+and (r.idRelationType in (33,34,35,36,215))
+and (r.idEntity3 is not null)
+group by q.info
+having count(*) > 10;
+           
+HERE;
+        $query = DB::connection('fnbr')->select($cmd);
+        //$annoSIH = collect($query)->keyBy('entry')->all();
+        $qualiaData = collect($query)->pluck('total')->all();
+        ddump($qualiaData);
+
         return [
-            'sihDoc' => $anno['crp_sih']->d,
-            'sihSen' => $anno['crp_sih']->s,
-            'sihFrm' => $anno['crp_sih']->f,
-            'sihLu' => $anno['crp_sih']->l,
-            'sihAnno' => $anno['crp_sih']->a,
-            'sihAS' => $anno['crp_sih']->an,
-            'sinanDoc' => $anno['crp_sinan']->d,
-            'sinanSen' => $anno['crp_sinan']->s,
-            'sinanFrm' => $anno['crp_sinan']->f,
-            'sinanLu' => $anno['crp_sinan']->l,
-            'sinanAnno' => $anno['crp_sinan']->a,
-            'sinanAS' => $anno['crp_sinan']->an,
-            'hFrames' => $frames['1550220']->f,
-            'hLus' => $frames['1550220']->l,
-            'vFrames' => $frames['1554179']->f,
-            'vLus' => $frames['1554179']->l,
+            'sihDoc' => $annoSIH[0]->d,
+            'sihSen' => $annoSIH[0]->s,
+            'sihFrm' => $annoSIH[0]->f,
+            'sihLu' => $annoSIH[0]->l,
+            'sihAnno' => $annoSIH[0]->a,
+            'sihAS' => $annoSIH[0]->an,
+            //
+            'sinanDoc' => $annoSINAN['crp_sinan']->d,
+            'sinanSen' => $annoSINAN['crp_sinan']->s,
+            'sinanFrm' => $annoSINAN['crp_sinan']->f,
+            'sinanLu' => $annoSINAN['crp_sinan']->l,
+            'sinanAnno' => $annoSINAN['crp_sinan']->a,
+            'sinanAS' => $annoSINAN['crp_sinan']->an,
+//            'pecDoc' => $anno['crp_pec']->d,
+//            'pecSen' => $anno['crp_pec']->s,
+//            'pecFrm' => $anno['crp_pec']->f,
+//            'pecLu' => $anno['crp_pec']->l,
+//            'pecAnno' => $anno['crp_pec']->a,
+//            'pecAS' => $anno['crp_pec']->an,
+            'hFrames' => $frames['sty_fd_health']->f,
+            'hLus' => $lus['1550220']->l,
+            'vFrames' => $frames['sty_fd_violence']->f,
+            'vLus' => $lus['1554179']->l,
+            'qualiaTotal' => $qualia[0]->total,
+            'qualiaData' => $qualiaData
+
         ];
     }
 

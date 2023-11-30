@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LanguageModel;
 use App\Services\DashboardService;
+use App\Services\GTService;
 use App\Services\McGovernService;
 
 class DashboardController extends Controller
@@ -31,6 +32,13 @@ class DashboardController extends Controller
         session(['currentController' => "McGovern"]);
         $this->data->mcgovern = McGovernService::dashboard();
         return $this->render("dashboard/mcgovern");
+    }
+    public function gt()
+    {
+        session(['currentController' => "GT"]);
+        $this->data->gt = GTService::dashboard();
+        ddump($this->data->gt);
+        return $this->render("dashboard/gt");
     }
 }
 

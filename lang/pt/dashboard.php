@@ -35,6 +35,22 @@ return [
     'profileEthnicityLabels' => ['Branco', 'Indígena', 'Negro', 'Pardo', 'Prefiro não informar'],
     'profileGender' => 'Gênero',
     'profileGenderLabels' => ['Homem', 'Mulher', 'Não-binário', 'Não-binário, Transgênero, Agênero, Gênero não-conformista'],
-
-
+    'qualiaLabels' => [
+        'caused_by',
+        'causes_naturally',
+        'constitutively_affects',
+        'has_as_member',
+        'has_as_part',
+        'has_as_quality',
+        'instance_of',
+        'is_a_follower_of',
+        'is_the_ability_of',
+        'is_the_activity_of',
+        'is_the_purpose_of',
+        'related_to',
+        'subtype_of',
+        'used_by',
+        'used_for'
+    ],
+    'profileQualia' => 'Relation types'
 ];

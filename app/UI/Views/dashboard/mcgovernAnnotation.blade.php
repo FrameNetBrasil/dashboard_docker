@@ -1,4 +1,4 @@
-<div class="dashboard-subtitle">SIH</div>
+<div class="dashboard-subtitle">Prontuário Eletrônico</div>
 <div class="flex flex-row gap-x-2">
     <div class="card w-96 dashboard-card1">
         <div class="header">Documents</div>
