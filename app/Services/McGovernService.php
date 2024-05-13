@@ -86,7 +86,8 @@ join frame f on (lu.idFrame = f.idFrame)
 join entityrelation rst on (f.idEntity = rst.idEntity1)
 join semantictype st on (rst.idEntity2 = st.idEntity)
 where st.entry in ('sty_fd_health','sty_fd_violence')
-and (r.idRelationType in (33,34,35,36,215))
+and (r.idRelationType in (33,34,35,36,215)
+and (r.idEntity3 is not null))
            
 HERE;
         $query = DB::connection('fnbr')->select($cmd);

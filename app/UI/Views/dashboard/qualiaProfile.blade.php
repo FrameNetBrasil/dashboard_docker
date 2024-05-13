@@ -5,7 +5,7 @@ $qualiaData = $data->mcgovern['qualiaData'];
 
 @endphp
 <div class="flex flex-row gap-x-2 flex-wrap">
-<div class="chart-container" style="position: relative; height:40vh; width:360px">
+<div class="chart-container" style="position: relative; width:500px">
     <canvas id="profileQualia"></canvas>
 </div>
 </div>
