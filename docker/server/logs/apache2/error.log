@@ -74,3 +74,21 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Sun Oct 29 01:31:02.557476 2023] [core:notice] [pid 1] AH00052: child pid 530 exit signal Broken pipe (13)
 [Mon Nov 13 13:49:43.014033 2023] [core:notice] [pid 1] AH00052: child pid 749 exit signal Broken pipe (13)
 [Sat Nov 25 09:13:10.602787 2023] [core:notice] [pid 1] AH00052: child pid 889 exit signal Broken pipe (13)
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.112.2. Set the 'ServerName' directive globally to suppress this message
+[Sat Dec 30 21:56:23.044980 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.1.0 configured -- resuming normal operations
+[Sat Dec 30 21:56:23.045007 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.112.2. Set the 'ServerName' directive globally to suppress this message
+[Sat Dec 30 22:11:33.537312 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.1.0 configured -- resuming normal operations
+[Sat Dec 30 22:11:33.537354 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Jan 11 10:38:46.479515 2024] [authz_core:error] [pid 38] [client 165.232.76.155:47014] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Jan 16 19:48:45.027632 2024] [authz_core:error] [pid 21] [client 143.42.118.5:49764] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Jan 27 05:44:57.468554 2024] [authz_core:error] [pid 22] [client 159.223.102.13:36644] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Feb 19 17:26:58.579677 2024] [authz_core:error] [pid 165] [client 159.223.108.26:51856] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Mar 03 04:03:05.020344 2024] [authz_core:error] [pid 22] [client 128.199.195.68:39576] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Mar 07 20:33:29.988104 2024] [core:notice] [pid 1] AH00052: child pid 4868 exit signal Broken pipe (13)
+[Thu Mar 07 20:35:19.511705 2024] [core:notice] [pid 1] AH00052: child pid 4880 exit signal Broken pipe (13)
+[Mon Apr 15 04:34:06.985504 2024] [autoindex:error] [pid 11919] [client 192.168.112.1:50580] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Thu Apr 18 02:49:21.592522 2024] [authz_core:error] [pid 12549] [client 173.212.201.205:34218] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Apr 18 02:50:24.784855 2024] [authz_core:error] [pid 168] [client 173.212.201.205:37106] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Apr 25 08:40:13.560929 2024] [authz_core:error] [pid 11924] [client 139.59.136.184:59024] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun May 05 20:26:33.707794 2024] [autoindex:error] [pid 11924] [client 192.168.112.1:47904] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com

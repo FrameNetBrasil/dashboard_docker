@@ -12,138 +12,13 @@ use App\Models\ObjectSentenceMMModel;
 use App\Models\SentenceModel;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
 use Orkester\Persistence\Criteria\Criteria;
 use Orkester\Persistence\Enum\Join;
 use Orkester\Persistence\PersistenceManager;
 use PHPSQLParser\builders\IndexTypeBuilder;
 
-class McGovernService extends AppService
+class DashboardService extends AppService
 {
-    public static function dashboard(): array
-    {
-        $database ??= config('database.default');
-        $cmd = <<<HERE
-        select st.entry domain, count(distinct f.idFrame) f
-from entityrelation e
-join frame f on (e.idEntity1 = f.idEntity)
-join semantictype st on (e.idEntity2 = st.idEntity)
-where st.entry in ('sty_fd_health','sty_fd_violence')
-group by st.entry
-            
-HERE;
-        $query = DB::connection($database)->select($cmd);
-        $frames = collect($query)->keyBy('domain')->all();
-        ddump($frames);
-        $cmd = <<<HERE
-        select e.idEntity2 idEntity, count(distinct lu.idLU) l
-from entityrelation e
-join frame f on (e.idEntity1 = f.idEntity)
-join lu on (lu.idFrame = f.idFrame)
-where identity2 in (1550220,1554179)
-group by e.idEntity2
-            
-HERE;
-        $query = DB::connection($database)->select($cmd);
-        $lus = collect($query)->keyBy('idEntity')->all();
-//ddump($lus);
-        $cmd = <<<HERE
-select count(distinct d.idDocument) d,count(distinct ds.idSentence) s,count(distinct f.idFrame) f,count(distinct lu.idLU) l,count(distinct a.idSentence) a, count(distinct a.idAnnotationSet) an
-from corpus c
-join document d on (d.idCorpus = c.idCorpus)
-join document_sentence ds on (ds.idDocument = d.idDocument)
-left join annotationset a on (ds.idSentence = a.idSentence)
-left join lu on (a.idEntityRelated = lu.idEntity)
-left join frame f on (lu.idFrame = f.idFrame)
-where c.idcorpus in (153,155);
-            
-HERE;
-        $query = DB::connection('internal')->select($cmd);
-        //$annoSIH = collect($query)->keyBy('entry')->all();
-        $annoSIH = $query;
-//        ddump($annoSIH);
-        $cmd = <<<HERE
-select c.entry, count(distinct d.idDocument) d,count(distinct ds.idSentence) s,count(distinct f.idFrame) f,count(distinct lu.idLU) l,count(distinct a.idSentence) a, count(distinct a.idAnnotationSet) an
-from corpus c
-join document d on (d.idCorpus = c.idCorpus)
-join document_sentence ds on (ds.idDocument = d.idDocument)
-left join annotationset a on (ds.idSentence = a.idSentence)
-left join lu on (a.idEntityRelated = lu.idEntity)
-left join frame f on (lu.idFrame = f.idFrame)
-where c.idcorpus in (154)
-group by c.entry;
-            
-HERE;
-        $query = DB::connection('internal')->select($cmd);
-        $annoSINAN = collect($query)->keyBy('entry')->all();
-//        ddump($annoSINAN);
-
-        $cmd = <<<HERE
-select count(*) total
-from entityrelation r
-join lu on (r.idEntity1 = lu.idEntity)    
-join frame f on (lu.idFrame = f.idFrame)
-join entityrelation rst on (f.idEntity = rst.idEntity1)
-join semantictype st on (rst.idEntity2 = st.idEntity)
-where st.entry in ('sty_fd_health','sty_fd_violence')
-and (r.idRelationType in (33,34,35,36,215)
-and (r.idEntity3 is not null))
-           
-HERE;
-        $query = DB::connection('fnbr')->select($cmd);
-        //$annoSIH = collect($query)->keyBy('entry')->all();
-        $qualia = $query;
-
-        $cmd = <<<HERE
-select count(*) total
-from entityrelation r
-join lu on (r.idEntity1 = lu.idEntity)
-join frame f on (lu.idFrame = f.idFrame)
-join entityrelation rst on (f.idEntity = rst.idEntity1)
-join semantictype st on (rst.idEntity2 = st.idEntity)
-join qualia q on (r.idEntity3 = q.idEntity)
-where st.entry in ('sty_fd_health','sty_fd_violence')
-and (r.idRelationType in (33,34,35,36,215))
-and (r.idEntity3 is not null)
-group by q.info
-having count(*) > 10;
-           
-HERE;
-        $query = DB::connection('fnbr')->select($cmd);
-        //$annoSIH = collect($query)->keyBy('entry')->all();
-        $qualiaData = collect($query)->pluck('total')->all();
-        ddump($qualiaData);
-
-        return [
-            'sihDoc' => $annoSIH[0]->d,
-            'sihSen' => $annoSIH[0]->s,
-            'sihFrm' => $annoSIH[0]->f,
-            'sihLu' => $annoSIH[0]->l,
-            'sihAnno' => $annoSIH[0]->a,
-            'sihAS' => $annoSIH[0]->an,
-            //
-            'sinanDoc' => $annoSINAN['crp_sinan']->d,
-            'sinanSen' => $annoSINAN['crp_sinan']->s,
-            'sinanFrm' => $annoSINAN['crp_sinan']->f,
-            'sinanLu' => $annoSINAN['crp_sinan']->l,
-            'sinanAnno' => $annoSINAN['crp_sinan']->a,
-            'sinanAS' => $annoSINAN['crp_sinan']->an,
-//            'pecDoc' => $anno['crp_pec']->d,
-//            'pecSen' => $anno['crp_pec']->s,
-//            'pecFrm' => $anno['crp_pec']->f,
-//            'pecLu' => $anno['crp_pec']->l,
-//            'pecAnno' => $anno['crp_pec']->a,
-//            'pecAS' => $anno['crp_pec']->an,
-            'hFrames' => $frames['sty_fd_health']->f,
-            'hLus' => $lus['1550220']->l,
-            'vFrames' => $frames['sty_fd_violence']->f,
-            'vLus' => $lus['1554179']->l,
-            'qualiaTotal' => $qualia[0]->total,
-            'qualiaData' => $qualiaData
-
-        ];
-    }
-
     public static function subcorporaFrame2(): int
     {
         $count = CorpusModel::getCriteria()
@@ -405,8 +280,7 @@ HERE;
             ->select("idSentence")
             ->where('documents.corpus.entry', 'IN', [
                 'crp_curso_dataset',
-                'crp_hoje_eu_nao_quero',
-                'crp_ad alternativa curta_hoje_eu_não_quero'
+                'crp_hoje_eu_nao_quero'
             ]);
 
     }
@@ -423,7 +297,7 @@ HERE;
         $result['sentences'] = $count[0]['n'];
         $count = ObjectMMModel::getCriteria()
             ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero','crp_ad alternativa curta_hoje_eu_não_quero'])
+            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->get("count(distinct idObjectMM) as n");
         $result['bbox'] = $count[0]['n'];
         $count1 = AnnotationSetModel::getCriteria()
@@ -431,7 +305,7 @@ HERE;
             ->get("count(distinct lu.idFrame) as n");
         $count2 = ObjectMMModel::getCriteria()
             ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero','crp_ad alternativa curta_hoje_eu_não_quero'])
+            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->get("count(distinct frameElement.idFrame) as n");
         $result['framesText'] = $count1[0]['n'];
         $result['framesBBox'] = $count2[0]['n'];
@@ -440,7 +314,7 @@ HERE;
             ->get("count(distinct frameElement.idFrameElement) as n");
         $count2 = ObjectMMModel::getCriteria()
             ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero','crp_ad alternativa curta_hoje_eu_não_quero'])
+            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->get("count(distinct idFrameElement) as n");
         $result['fesText'] = $count1[0]['n'];
         $result['fesBBox'] = $count2[0]['n'];
@@ -449,7 +323,7 @@ HERE;
             ->get("count(distinct lu.idLU) as n");
         $count2 = ObjectMMModel::getCriteria()
             ->where('idLU', 'IS', 'NOT NULL')
-            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero','crp_ad alternativa curta_hoje_eu_não_quero'])
+            ->where('documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->get("count(distinct idLU) as n");
         $result['lusText'] = $count1[0]['n'];
         $result['lusBBox'] = $count2[0]['n'];
@@ -459,7 +333,7 @@ HERE;
         $decimal = (App::currentLocale() == 'pt') ? ',' : '.';
         $result['avgAS']= number_format($counts[0]['a'] / $counts[0]['s'], 3, $decimal, '');
         $count = ObjectFrameMMModel::getCriteria()
-            ->where('objectMM.documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero','crp_ad alternativa curta_hoje_eu_não_quero'])
+            ->where('objectMM.documentMM.document.corpus.entry', 'IN', ['crp_curso_dataset','crp_hoje_eu_nao_quero'])
             ->groupBy("idObjectMM")
             ->get("count(*) as n");
         $sum = 0;
