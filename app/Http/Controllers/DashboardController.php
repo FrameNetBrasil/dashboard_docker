@@ -12,12 +12,15 @@ class DashboardController extends Controller
     public function main()
     {
         session(['currentController' => "Reinventa"]);
-        $this->data->frame2 = DashboardService::frame2();
-        $this->data->audition = DashboardService::audition();
-        $this->data->multi30k = DashboardService::multi30k();
-        ddump($this->data->multi30k);
-
-
+        if (DashboardService::mustCalculate()) {
+            $this->data->frame2 = DashboardService::frame2();
+            $this->data->audition = DashboardService::audition();
+            $this->data->multi30k = DashboardService::multi30k();
+            DashboardService::updateTable($this->data);
+        } else {
+            DashboardService::getFromTable($this->data);
+            $this->data->multi30k['chart'] = DashboardService::multi30kChart();
+        }
         return $this->render("dashboard/main");
     }
 
