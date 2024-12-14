@@ -15,6 +15,7 @@ return [
     'frames' => 'Frames distintos',
     'fes' => 'Elementos de Frame distintos',
     'lus' => 'Unidades Lexicais distintas',
+    'as' => 'Annotation Sets',
     'cvs' => 'Tipos de Objetos distintos',
     'avgSentence' => 'Média por sentença',
     'avgSentenceUL' => 'Unidades Lexicais',
