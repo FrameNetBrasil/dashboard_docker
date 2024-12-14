@@ -2,7 +2,7 @@
     @include('components.layout.head')
     <div id="content">
         <div class="contentContainer ui pushable">
-            <main role="main" class="main" style="width:calc(100% - 260px)">
+            <main role="main" class="main">
                 <header>
                     {{$head}}
                 </header>

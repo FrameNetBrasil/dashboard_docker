@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Database\Criteria;
+use Illuminate\Support\Facades\App;
 use Orkester\Security\MAuth;
 
 class AppService
@@ -11,6 +12,12 @@ class AppService
     {
         return Criteria::table('language')
             ->treeResult('idLanguage');
+    }
+
+
+    public static function getCurrentLanguageCode()
+    {
+        return session('currentLanguage')->language;
     }
 
     public static function getCurrentLanguage()
@@ -30,6 +37,17 @@ class AppService
     {
         return session('currentLanguage')->idLanguage ?? session('idLanguage');
     }
+
+    public static function setLocale()
+    {
+        App::setLocale(AppService::getCurrentLanguage()->language);
+    }
+
+    public static function getLocale()
+    {
+        return App::getLocale();
+    }
+
 
     public static function availableLanguages()
     {
