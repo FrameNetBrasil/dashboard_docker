@@ -92,3 +92,317 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Thu Apr 18 02:50:24.784855 2024] [authz_core:error] [pid 168] [client 173.212.201.205:37106] AH01630: client denied by server configuration: /var/www/html/public/server-status
 [Thu Apr 25 08:40:13.560929 2024] [authz_core:error] [pid 11924] [client 139.59.136.184:59024] AH01630: client denied by server configuration: /var/www/html/public/server-status
 [Sun May 05 20:26:33.707794 2024] [autoindex:error] [pid 11924] [client 192.168.112.1:47904] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Thu May 16 00:19:45.533576 2024] [autoindex:error] [pid 11924] [client 192.168.112.1:56378] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Sun May 19 18:30:10.301623 2024] [autoindex:error] [pid 22] [client 192.168.112.1:33396] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Sun May 26 16:25:52.465586 2024] [autoindex:error] [pid 168] [client 192.168.112.1:60212] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Sat Jun 01 03:39:54.597388 2024] [authz_core:error] [pid 15134] [client 165.22.34.189:49174] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Jun 01 15:58:48.514795 2024] [autoindex:error] [pid 15508] [client 185.2.30.227:53044] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Sun Jun 02 00:11:47.660753 2024] [autoindex:error] [pid 16222] [client 38.88.124.138:46232] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://framenet.icsi.berkeley.edu:8010/web
+[Sun Jun 02 15:41:36.545560 2024] [authz_core:error] [pid 16273] [client 38.88.124.138:39722] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Fri Jun 14 00:36:40.518072 2024] [authz_core:error] [pid 16528] [client 138.68.82.23:38748] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Jun 14 11:29:46.382909 2024] [authz_core:error] [pid 16664] [client 172.94.95.9:54174] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Fri Jun 14 20:21:42.666683 2024] [autoindex:error] [pid 16709] [client 146.70.228.86:52524] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Sun Jun 16 11:12:10.543110 2024] [authz_core:error] [pid 17082] [client 159.203.68.150:25906] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Jun 16 11:12:39.948562 2024] [authz_core:error] [pid 16927] [client 159.203.68.150:35894] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Jun 17 00:46:32.255367 2024] [autoindex:error] [pid 17096] [client 45.134.140.230:53688] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://framenet.icsi.berkeley.edu:8010/web
+[Tue Jun 18 10:23:45.468536 2024] [autoindex:error] [pid 17231] [client 192.168.112.1:55064] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Tue Jun 18 14:12:21.027424 2024] [authz_core:error] [pid 17232] [client 138.199.35.42:52482] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Fri Jun 21 04:45:11.840065 2024] [authz_core:error] [pid 17243] [client 46.101.1.225:42420] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Jun 23 08:36:59.790130 2024] [autoindex:error] [pid 17261] [client 192.168.112.1:59342] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Thu Jun 27 12:30:17.442531 2024] [autoindex:error] [pid 17320] [client 192.168.112.1:39724] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Fri Jun 28 08:17:44.096670 2024] [authz_core:error] [pid 17289] [client 146.70.45.216:45371] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Sat Jun 29 19:17:48.686774 2024] [autoindex:error] [pid 17716] [client 45.134.142.68:36604] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Sun Jun 30 18:16:06.294541 2024] [autoindex:error] [pid 19614] [client 37.19.217.97:46978] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://framenet.icsi.berkeley.edu:8010/web
+[Wed Jul 03 15:45:52.238903 2024] [authz_core:error] [pid 22284] [client 169.150.205.135:45812] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Tue Jul 09 02:02:23.588673 2024] [autoindex:error] [pid 22459] [client 192.168.112.1:41842] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Sat Jul 13 20:03:57.251433 2024] [autoindex:error] [pid 23263] [client 172.94.95.9:51006] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://framenet.icsi.berkeley.edu:8010/web
+[Sat Jul 13 22:52:38.234970 2024] [authz_core:error] [pid 23298] [client 169.150.205.134:34340] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Mon Jul 15 04:09:46.694360 2024] [autoindex:error] [pid 23330] [client 172.94.95.13:43844] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Tue Jul 16 20:15:58.990577 2024] [authz_core:error] [pid 23618] [client 38.88.124.138:60150] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Sun Jul 21 01:23:17.093897 2024] [authz_core:error] [pid 23708] [client 54.244.199.9:40664] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Jul 21 01:23:57.353355 2024] [authz_core:error] [pid 23705] [client 54.244.199.9:49208] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Jul 29 07:49:38.923896 2024] [autoindex:error] [pid 24205] [client 192.168.112.1:48242] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: binance.com
+[Mon Jul 29 11:14:04.958182 2024] [authz_core:error] [pid 24203] [client 138.199.43.8:37484] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Mon Jul 29 16:10:27.498259 2024] [autoindex:error] [pid 24249] [client 169.150.205.134:46454] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Mon Jul 29 16:17:44.347172 2024] [autoindex:error] [pid 24238] [client 138.199.43.18:36800] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Thu Aug 08 15:35:22.409212 2024] [authz_core:error] [pid 26353] [client 167.172.105.175:40366] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Aug 08 15:36:09.458371 2024] [authz_core:error] [pid 26355] [client 167.172.105.175:34460] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Aug 10 15:58:50.797284 2024] [authz_core:error] [pid 26491] [client 138.199.31.16:53786] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Mon Aug 12 19:09:42.934378 2024] [autoindex:error] [pid 26488] [client 107.175.196.110:47338] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Sun Aug 18 00:54:55.577632 2024] [authz_core:error] [pid 26682] [client 167.172.105.175:47546] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Aug 18 00:55:41.814481 2024] [authz_core:error] [pid 27028] [client 167.172.105.175:35384] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Aug 19 17:51:28.445156 2024] [authz_core:error] [pid 27028] [client 62.171.167.21:39374] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Aug 19 17:53:13.164405 2024] [authz_core:error] [pid 26648] [client 62.171.167.21:57078] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 23 08:38:50.797750 2024] [authz_core:error] [pid 26653] [client 3.236.24.244:53396] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 23 08:39:20.454419 2024] [authz_core:error] [pid 27184] [client 3.236.24.244:50776] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 23 08:53:41.140783 2024] [authz_core:error] [pid 26653] [client 3.236.24.244:33390] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 23 08:53:42.010978 2024] [authz_core:error] [pid 26653] [client 3.236.24.244:33390] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sat Aug 24 22:14:40.114716 2024] [authz_core:error] [pid 27185] [client 167.172.105.175:59694] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Aug 24 22:15:25.197451 2024] [authz_core:error] [pid 27152] [client 167.172.105.175:59092] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Aug 25 19:50:23.004751 2024] [authz_core:error] [pid 27259] [client 146.70.212.70:40736] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Mon Aug 26 09:04:44.580022 2024] [autoindex:error] [pid 27326] [client 64.31.3.109:57152] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Fri Aug 30 07:34:12.242066 2024] [authz_core:error] [pid 27399] [client 167.172.105.175:35464] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 30 07:35:00.574676 2024] [authz_core:error] [pid 27324] [client 167.172.105.175:58452] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 30 10:46:33.534991 2024] [authz_core:error] [pid 27402] [client 35.161.43.146:50284] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 30 10:47:12.009975 2024] [authz_core:error] [pid 27400] [client 35.161.43.146:49900] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 30 11:05:56.881650 2024] [authz_core:error] [pid 27330] [client 35.161.43.146:58102] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Aug 30 11:05:58.046073 2024] [authz_core:error] [pid 27330] [client 35.161.43.146:58102] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Sep 03 22:06:47.446589 2024] [authz_core:error] [pid 27597] [client 167.172.105.175:59306] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Sep 03 22:07:29.786163 2024] [authz_core:error] [pid 27402] [client 167.172.105.175:42640] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Sep 04 17:00:01.352231 2024] [authz_core:error] [pid 27567] [client 167.172.105.175:40530] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Sep 04 17:00:43.919006 2024] [authz_core:error] [pid 27330] [client 167.172.105.175:38400] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Sep 04 22:50:23.801077 2024] [authz_core:error] [pid 27325] [client 78.141.197.58:37696] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Sep 04 22:51:05.742410 2024] [authz_core:error] [pid 27597] [client 78.141.197.58:36976] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Sep 04 23:10:58.604209 2024] [authz_core:error] [pid 27325] [client 78.141.197.58:38480] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Sep 04 23:10:59.767090 2024] [authz_core:error] [pid 27325] [client 78.141.197.58:38480] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Sep 05 13:34:20.358150 2024] [authz_core:error] [pid 27400] [client 167.172.105.175:33418] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Sep 05 13:35:03.557444 2024] [authz_core:error] [pid 27325] [client 167.172.105.175:36674] AH01630: client denied by server configuration: /var/www/html/public/server-status
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.112.2. Set the 'ServerName' directive globally to suppress this message
+[Fri Sep 06 10:49:21.914557 2024] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.1.0 configured -- resuming normal operations
+[Fri Sep 06 10:49:21.914595 2024] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Fri Sep 13 17:41:39.899923 2024] [authz_core:error] [pid 16] [client 78.141.197.58:40030] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 13 17:42:21.115406 2024] [authz_core:error] [pid 21] [client 78.141.197.58:59418] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 13 18:02:07.010783 2024] [authz_core:error] [pid 37] [client 78.141.197.58:46578] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 13 18:02:08.144552 2024] [authz_core:error] [pid 37] [client 78.141.197.58:46578] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Sep 15 23:39:45.781622 2024] [authz_core:error] [pid 133] [client 192.168.112.1:53706] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Sep 19 08:05:29.854683 2024] [authz_core:error] [pid 20] [client 3.64.56.154:59414] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Sep 19 08:06:12.343062 2024] [authz_core:error] [pid 39] [client 3.64.56.154:38726] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Sep 19 08:26:40.968153 2024] [authz_core:error] [pid 20] [client 3.64.56.154:48276] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Sep 19 08:26:42.210437 2024] [authz_core:error] [pid 20] [client 3.64.56.154:48276] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Sep 19 17:28:09.239830 2024] [authz_core:error] [pid 136] [client 78.141.197.58:46826] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Sep 19 17:28:51.975164 2024] [authz_core:error] [pid 133] [client 78.141.197.58:43678] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Sep 19 17:49:11.046324 2024] [authz_core:error] [pid 141] [client 78.141.197.58:54742] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Sep 19 17:49:12.220902 2024] [authz_core:error] [pid 141] [client 78.141.197.58:54742] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Sep 22 04:09:35.301995 2024] [authz_core:error] [pid 140] [client 192.168.112.1:48562] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Fri Sep 27 02:50:58.068247 2024] [authz_core:error] [pid 137] [client 54.161.108.51:37060] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 27 02:51:27.765081 2024] [authz_core:error] [pid 141] [client 54.161.108.51:45616] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 27 03:06:00.382223 2024] [authz_core:error] [pid 137] [client 54.161.108.51:48180] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 27 03:06:01.248899 2024] [authz_core:error] [pid 137] [client 54.161.108.51:48180] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Fri Sep 27 18:19:45.238161 2024] [authz_core:error] [pid 626] [client 78.141.197.58:38002] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 27 18:20:29.031866 2024] [authz_core:error] [pid 292] [client 78.141.197.58:44396] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 27 18:41:09.392055 2024] [authz_core:error] [pid 626] [client 78.141.197.58:47326] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Sep 27 18:41:10.617014 2024] [authz_core:error] [pid 626] [client 78.141.197.58:47326] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Oct 02 16:34:14.348372 2024] [authz_core:error] [pid 133] [client 34.70.176.78:44142] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Oct 02 16:34:30.331280 2024] [authz_core:error] [pid 16407] [client 34.70.176.78:46126] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Oct 02 16:34:57.331616 2024] [authz_core:error] [pid 1585] [client 34.70.176.78:34470] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Oct 02 16:35:09.159539 2024] [authz_core:error] [pid 2998] [client 34.28.144.124:37376] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Wed Oct 02 16:37:01.154437 2024] [authz_core:error] [pid 16529] [client 34.28.144.124:47480] AH01630: client denied by server configuration: /var/www/html/public/.htdeployment
+[Wed Oct 02 21:01:11.379449 2024] [autoindex:error] [pid 16554] [client 34.70.192.75:58616] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Sat Oct 05 03:16:43.534590 2024] [autoindex:error] [pid 16526] [client 157.245.59.240:58876] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sat Oct 05 03:25:46.911784 2024] [autoindex:error] [pid 16554] [client 157.245.59.240:43892] AH01276: Cannot serve directory /usr/share/apache2/icons/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sat Oct 05 03:25:51.472672 2024] [autoindex:error] [pid 16552] [client 157.245.59.240:48044] AH01276: Cannot serve directory /var/www/html/public/images/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sat Oct 05 03:35:27.619053 2024] [autoindex:error] [pid 16619] [client 157.245.59.240:42612] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Tue Oct 08 08:13:51.687779 2024] [authz_core:error] [pid 466] [client 78.141.197.58:33230] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Oct 08 08:14:32.811252 2024] [authz_core:error] [pid 16635] [client 78.141.197.58:42734] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Oct 08 08:34:14.560540 2024] [authz_core:error] [pid 466] [client 78.141.197.58:52330] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Oct 08 08:34:15.726905 2024] [authz_core:error] [pid 466] [client 78.141.197.58:52330] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Oct 10 09:46:00.177368 2024] [authz_core:error] [pid 16710] [client 192.168.112.1:47508] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Oct 17 14:04:43.256987 2024] [autoindex:error] [pid 16509] [client 192.168.112.1:43184] AH01276: Cannot serve directory /var/www/html/public/web/assets/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Oct 20 20:11:36.620314 2024] [authz_core:error] [pid 16711] [client 149.88.18.8:35256] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Sun Oct 20 20:13:30.629736 2024] [authz_core:error] [pid 466] [client 149.88.18.8:44202] AH01630: client denied by server configuration: /var/www/html/public/.htdeployment
+[Sun Oct 20 21:51:54.502608 2024] [autoindex:error] [pid 17171] [client 146.70.181.243:37860] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Sun Oct 20 23:19:49.988474 2024] [autoindex:error] [pid 17256] [client 35.239.135.60:50354] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Sun Oct 20 23:57:41.085362 2024] [authz_core:error] [pid 17262] [client 34.71.149.89:45360] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Sun Oct 20 23:59:34.084955 2024] [authz_core:error] [pid 17255] [client 34.71.149.89:60604] AH01630: client denied by server configuration: /var/www/html/public/.htdeployment
+[Mon Oct 21 00:12:27.103340 2024] [authz_core:error] [pid 17255] [client 34.30.133.32:43044] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Oct 21 00:12:42.402427 2024] [authz_core:error] [pid 17258] [client 34.30.133.32:46126] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Oct 21 00:13:08.405756 2024] [authz_core:error] [pid 17301] [client 34.30.133.32:42084] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Oct 28 14:16:07.902049 2024] [authz_core:error] [pid 17305] [client 35.222.52.234:45142] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Oct 28 14:16:23.068613 2024] [authz_core:error] [pid 17302] [client 35.222.52.234:54076] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Oct 28 14:16:50.068468 2024] [authz_core:error] [pid 17302] [client 35.222.52.234:49670] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Oct 28 17:54:21.861062 2024] [authz_core:error] [pid 17845] [client 34.41.134.244:33218] AH01630: client denied by server configuration: /var/www/html/public/.htpasswd
+[Mon Oct 28 17:56:16.516198 2024] [authz_core:error] [pid 17830] [client 34.41.134.244:49808] AH01630: client denied by server configuration: /var/www/html/public/.htdeployment
+[Mon Oct 28 19:08:50.845631 2024] [autoindex:error] [pid 17849] [client 34.27.23.206:37562] AH01276: Cannot serve directory /var/www/html/public/web/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://200.131.61.131:8010/web
+[Sun Nov 10 21:31:16.928370 2024] [authz_core:error] [pid 18333] [client 34.68.34.74:51208] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Nov 10 21:31:20.304619 2024] [authz_core:error] [pid 18341] [client 34.68.34.67:45077] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 10 21:31:20.507064 2024] [authz_core:error] [pid 18342] [client 8.34.210.33:38931] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 10 21:31:20.601913 2024] [authz_core:error] [pid 18343] [client 34.68.34.67:45078] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sun Nov 10 21:31:20.804202 2024] [authz_core:error] [pid 18314] [client 8.34.210.33:38932] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sun Nov 10 21:31:26.252638 2024] [authz_core:error] [pid 18310] [client 8.34.210.38:36879] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Nov 10 21:31:30.825778 2024] [authz_core:error] [pid 18311] [client 8.34.210.33:38960] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 10 21:31:31.122686 2024] [authz_core:error] [pid 18347] [client 8.34.210.33:38961] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sun Nov 10 21:32:17.901213 2024] [authz_core:error] [pid 18333] [client 34.68.34.70:1037] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 10 21:32:18.198265 2024] [authz_core:error] [pid 18343] [client 34.68.34.70:1038] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 12 05:21:38.902718 2024] [authz_core:error] [pid 18536] [client 34.68.34.67:49154] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 12 05:21:43.760769 2024] [authz_core:error] [pid 18514] [client 34.68.34.67:49173] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 12 05:21:44.058546 2024] [authz_core:error] [pid 18522] [client 34.68.34.67:49175] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 12 05:21:44.645584 2024] [authz_core:error] [pid 18512] [client 34.68.34.64:47128] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 12 05:21:44.948261 2024] [authz_core:error] [pid 18545] [client 34.68.34.64:47129] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 12 21:24:58.126547 2024] [authz_core:error] [pid 18663] [client 34.68.34.93:11272] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 12 21:25:00.631943 2024] [authz_core:error] [pid 18675] [client 8.34.210.48:51202] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 12 21:25:00.963144 2024] [authz_core:error] [pid 18675] [client 34.68.34.93:11292] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 12 21:25:01.261076 2024] [authz_core:error] [pid 18675] [client 34.68.34.93:11296] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 12 21:25:03.565332 2024] [authz_core:error] [pid 18678] [client 34.68.34.93:11316] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 12 21:25:03.862798 2024] [authz_core:error] [pid 18647] [client 34.68.34.93:11318] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 12 21:25:04.022572 2024] [authz_core:error] [pid 18678] [client 34.68.34.77:34839] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 12 21:25:08.168057 2024] [authz_core:error] [pid 18682] [client 8.34.210.34:8213] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 12 21:25:08.464603 2024] [authz_core:error] [pid 18694] [client 8.34.210.34:8214] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Wed Nov 13 18:52:05.415123 2024] [authz_core:error] [pid 18829] [client 34.68.34.72:12294] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Nov 13 18:52:12.925905 2024] [authz_core:error] [pid 18833] [client 8.34.210.38:38922] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Nov 13 18:52:13.223839 2024] [authz_core:error] [pid 18895] [client 8.34.210.38:38923] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Wed Nov 13 20:16:54.894545 2024] [authz_core:error] [pid 18891] [client 34.68.34.90:40963] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Nov 13 20:16:57.502704 2024] [authz_core:error] [pid 18900] [client 34.68.34.90:40976] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Nov 13 20:16:58.557687 2024] [authz_core:error] [pid 18907] [client 34.68.34.87:38958] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Nov 13 20:16:58.855270 2024] [authz_core:error] [pid 18909] [client 34.68.34.87:38959] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Wed Nov 13 20:17:00.550878 2024] [authz_core:error] [pid 18908] [client 34.68.34.77:36883] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Nov 13 20:17:00.848696 2024] [authz_core:error] [pid 18906] [client 34.68.34.77:36884] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Wed Nov 13 20:17:02.599172 2024] [authz_core:error] [pid 18897] [client 34.68.34.87:38980] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Nov 13 20:17:11.109107 2024] [authz_core:error] [pid 18902] [client 34.68.34.87:38989] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 04:10:21.777543 2024] [authz_core:error] [pid 18963] [client 34.68.34.76:49160] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 04:10:25.488696 2024] [authz_core:error] [pid 19016] [client 34.68.34.77:16388] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 04:10:25.832512 2024] [authz_core:error] [pid 18954] [client 34.68.34.76:49178] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 04:10:28.296254 2024] [authz_core:error] [pid 18948] [client 8.34.210.33:16426] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 04:10:29.507202 2024] [authz_core:error] [pid 19020] [client 8.34.210.47:20512] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 14 04:10:29.687090 2024] [authz_core:error] [pid 19023] [client 34.68.34.76:49211] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 14 04:10:29.800139 2024] [authz_core:error] [pid 18950] [client 8.34.210.47:20513] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Nov 14 04:10:29.978671 2024] [authz_core:error] [pid 18960] [client 34.68.34.76:49212] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Nov 14 06:47:16.368015 2024] [authz_core:error] [pid 19143] [client 34.68.34.87:45103] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 06:47:20.322869 2024] [authz_core:error] [pid 19105] [client 34.68.34.87:45142] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 14 06:47:20.615514 2024] [authz_core:error] [pid 19086] [client 34.68.34.87:45143] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Nov 14 06:47:20.685929 2024] [authz_core:error] [pid 19090] [client 34.68.34.87:45144] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 14 06:47:20.978936 2024] [authz_core:error] [pid 19087] [client 34.68.34.87:45145] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Nov 14 11:36:14.017456 2024] [authz_core:error] [pid 19210] [client 34.68.34.83:16397] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 11:36:15.771325 2024] [authz_core:error] [pid 19208] [client 34.68.34.91:8194] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 11:36:18.275844 2024] [authz_core:error] [pid 19273] [client 8.34.210.55:26650] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 14 11:36:19.060248 2024] [authz_core:error] [pid 19290] [client 34.68.34.67:12314] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 14 11:36:19.352774 2024] [authz_core:error] [pid 19296] [client 34.68.34.67:12316] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Nov 14 11:36:20.521602 2024] [authz_core:error] [pid 19294] [client 34.68.34.91:8217] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 14 11:36:20.814452 2024] [authz_core:error] [pid 19275] [client 34.68.34.91:8218] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Nov 14 11:36:21.659835 2024] [authz_core:error] [pid 19297] [client 34.68.34.91:8221] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 14 11:36:21.952699 2024] [authz_core:error] [pid 19271] [client 34.68.34.91:8222] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Fri Nov 15 16:29:37.825779 2024] [authz_core:error] [pid 19445] [client 8.34.210.47:34827] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Nov 17 06:55:14.809588 2024] [authz_core:error] [pid 19466] [client 34.68.34.84:34818] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Nov 17 06:55:17.585227 2024] [authz_core:error] [pid 19522] [client 8.34.210.34:10261] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 17 06:55:17.878105 2024] [authz_core:error] [pid 19520] [client 34.68.34.84:34836] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Nov 17 06:55:17.882408 2024] [authz_core:error] [pid 19466] [client 8.34.210.34:10263] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sun Nov 17 06:55:18.942125 2024] [authz_core:error] [pid 19530] [client 8.34.210.34:10267] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 17 06:55:19.239213 2024] [authz_core:error] [pid 19522] [client 8.34.210.34:10268] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sun Nov 17 06:55:21.837228 2024] [authz_core:error] [pid 19457] [client 34.68.34.84:34871] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 17 06:55:22.134887 2024] [authz_core:error] [pid 19516] [client 34.68.34.84:34873] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sun Nov 17 06:55:22.184524 2024] [authz_core:error] [pid 19457] [client 8.34.210.34:10273] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Nov 17 19:34:10.977150 2024] [authz_core:error] [pid 19541] [client 34.68.34.80:41003] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 17 19:34:11.278643 2024] [authz_core:error] [pid 19604] [client 34.68.34.80:41004] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sun Nov 17 19:34:19.233081 2024] [authz_core:error] [pid 19660] [client 34.68.34.80:41015] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 17 19:34:19.532943 2024] [authz_core:error] [pid 19646] [client 34.68.34.80:41016] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Nov 18 03:04:29.625165 2024] [authz_core:error] [pid 19685] [client 34.68.34.76:12298] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Mon Nov 18 03:04:29.924053 2024] [authz_core:error] [pid 19714] [client 34.68.34.76:12299] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Nov 18 03:04:39.158962 2024] [authz_core:error] [pid 19689] [client 34.68.34.75:10276] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Nov 18 03:04:42.437564 2024] [authz_core:error] [pid 19713] [client 34.68.34.75:10298] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Mon Nov 18 03:04:42.735017 2024] [authz_core:error] [pid 19692] [client 34.68.34.75:10300] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Nov 18 03:04:55.862879 2024] [authz_core:error] [pid 19725] [client 34.68.34.92:14347] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Mon Nov 18 03:04:56.160957 2024] [authz_core:error] [pid 19719] [client 34.68.34.92:14348] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Nov 18 03:05:32.468816 2024] [authz_core:error] [pid 19727] [client 34.68.34.72:16387] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Nov 18 16:06:22.257296 2024] [authz_core:error] [pid 19809] [client 34.68.34.85:2050] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Nov 18 16:06:25.303033 2024] [authz_core:error] [pid 19809] [client 34.68.34.73:47120] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Nov 18 16:06:28.211761 2024] [authz_core:error] [pid 19835] [client 34.68.34.88:40983] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Mon Nov 18 16:06:28.509810 2024] [authz_core:error] [pid 19833] [client 34.68.34.88:40985] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Nov 18 16:06:29.922684 2024] [authz_core:error] [pid 19783] [client 34.68.34.88:14347] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Mon Nov 18 16:06:30.220326 2024] [authz_core:error] [pid 19851] [client 34.68.34.88:14348] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Nov 18 17:16:02.686613 2024] [authz_core:error] [pid 19883] [client 34.68.34.91:57348] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Nov 18 17:16:02.834579 2024] [authz_core:error] [pid 19757] [client 34.68.34.92:54276] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Nov 18 17:16:06.144406 2024] [authz_core:error] [pid 19900] [client 34.68.34.92:54291] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Nov 18 17:16:07.153876 2024] [authz_core:error] [pid 19898] [client 8.34.210.38:24586] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 19 06:49:33.981283 2024] [authz_core:error] [pid 19995] [client 8.34.210.60:4103] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 19 06:49:36.769136 2024] [authz_core:error] [pid 19997] [client 34.68.34.81:14367] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 19 06:49:37.454366 2024] [authz_core:error] [pid 20026] [client 34.68.34.81:14371] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 19 06:49:37.751701 2024] [authz_core:error] [pid 20025] [client 34.68.34.81:14373] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 19 06:49:39.696378 2024] [authz_core:error] [pid 20020] [client 34.68.34.73:53258] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 19 06:49:41.343113 2024] [authz_core:error] [pid 20030] [client 34.68.34.73:53270] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 19 06:49:41.641111 2024] [authz_core:error] [pid 19987] [client 34.68.34.73:53273] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 19 06:49:43.419993 2024] [authz_core:error] [pid 19975] [client 8.34.210.60:4129] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 19 06:49:44.865677 2024] [authz_core:error] [pid 20038] [client 34.68.34.92:14385] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 19 06:49:45.162801 2024] [authz_core:error] [pid 20030] [client 34.68.34.92:14386] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 19 06:49:48.580740 2024] [authz_core:error] [pid 20031] [client 34.68.34.83:4122] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 19 06:49:51.889567 2024] [authz_core:error] [pid 20043] [client 8.34.210.34:51249] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 19 06:49:52.189859 2024] [authz_core:error] [pid 20025] [client 8.34.210.34:51250] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 19 11:21:46.842697 2024] [authz_core:error] [pid 20104] [client 8.34.210.38:12298] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 19 11:21:47.148805 2024] [authz_core:error] [pid 20083] [client 8.34.210.38:12299] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 19 11:21:51.680819 2024] [authz_core:error] [pid 20106] [client 34.68.34.77:53260] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Nov 19 11:21:51.978018 2024] [authz_core:error] [pid 20073] [client 34.68.34.77:53261] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Nov 19 21:25:22.069540 2024] [authz_core:error] [pid 20066] [client 34.19.127.209:40967] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Nov 19 21:25:23.669507 2024] [authz_core:error] [pid 20149] [client 34.19.127.200:36877] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 21 06:54:38.645780 2024] [authz_core:error] [pid 20288] [client 34.68.34.76:12298] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 21 06:54:38.988868 2024] [authz_core:error] [pid 20336] [client 34.68.34.76:12299] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Nov 21 06:54:45.963609 2024] [authz_core:error] [pid 20269] [client 34.68.34.70:22570] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Nov 21 06:54:48.671149 2024] [authz_core:error] [pid 20342] [client 34.68.34.64:53265] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Nov 21 06:54:48.977469 2024] [authz_core:error] [pid 20308] [client 34.68.34.64:53266] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Nov 23 06:03:07.714247 2024] [authz_core:error] [pid 20408] [client 8.34.210.37:16394] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Nov 23 06:03:08.819812 2024] [authz_core:error] [pid 20437] [client 34.68.34.77:47108] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Nov 23 06:03:12.079186 2024] [authz_core:error] [pid 20437] [client 8.34.210.37:16431] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sat Nov 23 06:03:12.489465 2024] [authz_core:error] [pid 20438] [client 8.34.210.37:16433] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Nov 23 06:03:12.692798 2024] [authz_core:error] [pid 20418] [client 8.34.210.37:16434] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sat Nov 23 06:03:13.007358 2024] [authz_core:error] [pid 20437] [client 8.34.210.37:16435] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sun Nov 24 19:03:55.943632 2024] [authz_core:error] [pid 20601] [client 34.68.34.80:40984] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Nov 24 19:03:56.269724 2024] [authz_core:error] [pid 20606] [client 34.68.34.80:40985] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Nov 25 17:53:06.018396 2024] [authz_core:error] [pid 20646] [client 34.68.34.67:40962] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Nov 27 07:58:20.893850 2024] [authz_core:error] [pid 20754] [client 34.68.34.87:51203] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Nov 27 07:58:25.676476 2024] [authz_core:error] [pid 20797] [client 34.68.34.87:51234] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Nov 27 07:58:25.695210 2024] [authz_core:error] [pid 20747] [client 34.68.34.83:8197] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Nov 27 07:58:25.973761 2024] [authz_core:error] [pid 20776] [client 34.68.34.87:51237] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Wed Nov 27 19:13:18.931157 2024] [authz_core:error] [pid 20970] [client 34.68.34.84:18446] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Nov 27 19:13:19.253963 2024] [authz_core:error] [pid 20941] [client 34.68.34.84:18447] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Wed Nov 27 19:57:45.904483 2024] [authz_core:error] [pid 20988] [client 34.68.34.78:10260] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Nov 27 19:57:46.701469 2024] [authz_core:error] [pid 20993] [client 34.68.34.78:10263] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Wed Nov 27 19:57:47.640353 2024] [authz_core:error] [pid 20970] [client 34.68.34.78:10266] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Nov 27 19:57:47.938871 2024] [authz_core:error] [pid 20994] [client 34.68.34.78:10267] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Nov 28 22:57:47.337288 2024] [authz_core:error] [pid 21065] [client 34.19.127.201:43012] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Nov 29 03:24:13.945696 2024] [authz_core:error] [pid 21160] [client 8.34.210.38:10260] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Fri Nov 29 03:24:14.279191 2024] [authz_core:error] [pid 21099] [client 8.34.210.38:10261] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Fri Nov 29 03:24:35.249867 2024] [authz_core:error] [pid 21159] [client 8.34.210.38:10264] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Nov 29 03:24:38.704016 2024] [authz_core:error] [pid 21099] [client 34.68.34.83:8204] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Fri Nov 29 03:24:39.012246 2024] [authz_core:error] [pid 21155] [client 34.68.34.83:8205] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Nov 30 07:06:31.943599 2024] [authz_core:error] [pid 21296] [client 8.34.210.47:4101] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Nov 30 07:06:35.918596 2024] [authz_core:error] [pid 21337] [client 8.34.210.38:8219] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sat Nov 30 07:06:36.220505 2024] [authz_core:error] [pid 21305] [client 8.34.210.38:8220] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Nov 30 07:06:42.908035 2024] [authz_core:error] [pid 21282] [client 34.68.34.83:4133] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sat Nov 30 07:06:43.210425 2024] [authz_core:error] [pid 21336] [client 34.68.34.83:4134] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Nov 30 07:32:24.515693 2024] [authz_core:error] [pid 21274] [client 8.34.210.34:30727] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Nov 30 07:32:30.833227 2024] [authz_core:error] [pid 21276] [client 34.68.34.75:43044] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sat Nov 30 07:32:31.134755 2024] [authz_core:error] [pid 21155] [client 34.68.34.75:43045] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Nov 30 07:32:36.948324 2024] [authz_core:error] [pid 21340] [client 34.68.34.75:43068] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sat Nov 30 07:32:37.293025 2024] [authz_core:error] [pid 21281] [client 34.68.34.75:43069] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Dec 02 08:54:34.491824 2024] [authz_core:error] [pid 21548] [client 34.68.34.72:6154] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Dec 02 08:54:53.161441 2024] [authz_core:error] [pid 21544] [client 8.34.210.44:4098] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Dec 02 08:54:57.162460 2024] [authz_core:error] [pid 21432] [client 34.68.34.76:45088] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Mon Dec 02 08:54:57.461320 2024] [authz_core:error] [pid 21506] [client 34.68.34.76:45089] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Dec 03 10:25:43.723921 2024] [authz_core:error] [pid 21661] [client 34.68.34.81:2056] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Dec 04 16:30:18.975936 2024] [authz_core:error] [pid 21661] [client 44.201.134.97:59166] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Dec 04 16:30:44.774826 2024] [authz_core:error] [pid 21679] [client 44.201.134.97:34238] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Dec 04 16:43:15.840405 2024] [authz_core:error] [pid 21661] [client 44.201.134.97:33294] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Wed Dec 04 16:43:16.590799 2024] [authz_core:error] [pid 21661] [client 44.201.134.97:33294] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Wed Dec 04 20:00:40.896750 2024] [authz_core:error] [pid 21718] [client 8.34.210.52:16400] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Dec 05 07:53:50.696282 2024] [authz_core:error] [pid 21814] [client 34.68.34.84:6147] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Dec 05 07:54:00.269247 2024] [authz_core:error] [pid 21804] [client 8.34.210.34:22553] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Dec 05 07:54:00.283937 2024] [authz_core:error] [pid 21787] [client 8.34.210.34:22554] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Thu Dec 05 07:54:00.569121 2024] [authz_core:error] [pid 21821] [client 8.34.210.34:22555] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Thu Dec 05 14:44:23.477635 2024] [authz_core:error] [pid 21912] [client 34.68.34.72:24616] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Thu Dec 05 14:44:23.815252 2024] [authz_core:error] [pid 21908] [client 34.68.34.72:24617] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Fri Dec 06 10:57:21.199847 2024] [authz_core:error] [pid 21906] [client 34.68.34.89:43017] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Dec 06 10:57:24.192433 2024] [authz_core:error] [pid 22010] [client 34.68.34.91:14346] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Fri Dec 06 10:57:24.493137 2024] [authz_core:error] [pid 21926] [client 34.68.34.91:14347] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Fri Dec 06 10:57:29.781279 2024] [authz_core:error] [pid 21926] [client 8.34.210.38:16394] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Fri Dec 06 10:57:30.079316 2024] [authz_core:error] [pid 22012] [client 8.34.210.38:16395] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Dec 07 06:23:08.038007 2024] [authz_core:error] [pid 22050] [client 34.68.34.93:6152] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sat Dec 07 06:23:30.438752 2024] [authz_core:error] [pid 22075] [client 34.68.34.75:43040] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sat Dec 07 06:23:30.735263 2024] [authz_core:error] [pid 22005] [client 34.68.34.75:43041] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Dec 07 13:26:24.103605 2024] [authz_core:error] [pid 22169] [client 34.68.34.93:16415] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Dec 08 05:33:01.293308 2024] [authz_core:error] [pid 22245] [client 34.68.34.76:20492] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Sun Dec 08 05:33:06.963372 2024] [authz_core:error] [pid 22246] [client 34.68.34.76:20510] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Sun Dec 08 05:33:07.261708 2024] [authz_core:error] [pid 22245] [client 34.68.34.76:20511] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Dec 09 05:54:12.211198 2024] [authz_core:error] [pid 22336] [client 34.68.34.80:40972] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Mon Dec 09 05:54:12.540017 2024] [authz_core:error] [pid 22321] [client 34.68.34.80:40973] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Mon Dec 09 05:54:29.891634 2024] [authz_core:error] [pid 22291] [client 34.68.34.67:12324] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Dec 09 07:08:48.775884 2024] [authz_core:error] [pid 22291] [client 34.68.34.77:12290] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Dec 09 07:08:50.435879 2024] [authz_core:error] [pid 22359] [client 34.68.34.77:12297] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Mon Dec 09 07:08:52.992738 2024] [authz_core:error] [pid 22359] [client 34.68.34.74:16418] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Mon Dec 09 07:08:53.293788 2024] [authz_core:error] [pid 22291] [client 34.68.34.74:16419] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Tue Dec 10 04:08:16.568862 2024] [authz_core:error] [pid 22526] [client 34.19.127.201:40965] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Dec 10 04:08:37.064152 2024] [authz_core:error] [pid 22600] [client 34.19.127.201:40977] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Tue Dec 10 19:52:42.782630 2024] [authz_core:error] [pid 22715] [client 34.19.127.200:51211] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Tue Dec 10 19:52:43.172598 2024] [authz_core:error] [pid 22719] [client 34.19.127.200:51212] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Wed Dec 11 06:12:38.716618 2024] [authz_core:error] [pid 22794] [client 34.68.34.95:22535] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Dec 13 07:08:01.885513 2024] [authz_core:error] [pid 23239] [client 34.68.34.72:20483] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Dec 13 15:05:37.527835 2024] [authz_core:error] [pid 23437] [client 34.68.34.92:12290] AH01630: client denied by server configuration: /var/www/html/public/server-status
+[Fri Dec 13 15:05:47.342914 2024] [authz_core:error] [pid 23443] [client 8.34.210.47:53263] AH01630: client denied by server configuration: /var/www/html/public/.htaccess
+[Fri Dec 13 15:05:47.643527 2024] [authz_core:error] [pid 23440] [client 8.34.210.47:53264] AH01630: client denied by server configuration: /var/www/html/public/.htaccess.bak
+[Sat Dec 14 03:07:38.463910 2024] [authz_core:error] [pid 23712] [client 34.19.127.187:36881] AH01630: client denied by server configuration: /var/www/html/public/server-status

@@ -237,8 +237,12 @@ class DashboardService //extends AppService
             ->where('idFrameElement', 'IS', 'NOT NULL')
             ->where('document.corpus.entry', 'IN', ['crp_pedro_pelo_mundo'])
             ->get("count(distinct idFrameElement) as n");
+        $count3 = AnnotationSetModel::getCriteria()
+            ->where('idSentence', 'IN', $sentences)
+            ->get("count(*) as n");
         $result['fesText'] = $count1[0]['n'];
         $result['fesBBox'] = $count2[0]['n'];
+        $result['asText'] = $count3[0]['n'];
         $count1 = AnnotationSetModel::getCriteria()
             ->where('idSentence', 'IN', $sentences)
             ->get("count(distinct lu.idLU) as n");
@@ -319,8 +323,12 @@ class DashboardService //extends AppService
             ->where('idLU', 'IS', 'NOT NULL')
             ->where('document.corpus.entry', 'IN', ['crp_curso_dataset', 'crp_hoje_eu_nao_quero'])
             ->get("count(distinct idLU) as n");
+        $count3 = AnnotationSetModel::getCriteria()
+            ->where('idSentence', 'IN', $sentences)
+            ->get("count(*) as n");
         $result['lusText'] = $count1[0]['n'];
         $result['lusBBox'] = $count2[0]['n'];
+        $result['asText'] = $count3[0]['n'];
         $counts = AnnotationSetModel::getCriteria()
             ->where('sentence.idSentence', 'IN', $sentences)
             ->get(["count(idAnnotationSet) as a", "count(distinct idSentence) as s"]);
@@ -336,7 +344,6 @@ class DashboardService //extends AppService
         }
         $avg = ($sum / count($count)) * 0.040; // 40 ms por frame
         $result['avgDuration'] = number_format($avg, 3, $decimal, '');
-        ddump($result);
         return $result;
     }
 
@@ -456,9 +463,11 @@ order by 1,2;";
         $chart = [];
         $sum = 0;
         foreach ($rows as $row) {
-            $sum += $row->n;
+            $sum += is_object($row) ? $row->n : $row['n'];
+            $m = is_object($row) ? $row->m : $row['m'];
+            $y = is_object($row) ? $row->y : $row['y'];
             $chart[] = [
-                'm' => $row->m . '/' . $row->y,
+                'm' => $m. '/' . $y,
                 'value' => $sum
             ];
         }
@@ -479,6 +488,7 @@ order by 1,2;";
  frame2_text_frame = {$data->frame2['framesText']},
  frame2_text_ef = {$data->frame2['fesText']},
  frame2_text_lu = {$data->frame2['lusText']},
+ frame2_text_as = {$data->frame2['asText']},
  frame2_video_bbox = {$data->frame2['bbox']},
  frame2_video_frame = {$data->frame2['framesBBox']},
  frame2_video_ef = {$data->frame2['fesBBox']},
@@ -489,6 +499,7 @@ order by 1,2;";
  audition_text_frame = {$data->audition['framesText']},
  audition_text_ef = {$data->audition['fesText']},
  audition_text_lu = {$data->audition['lusText']},
+ audition_text_as = {$data->audition['asText']},
  audition_video_bbox = {$data->audition['bbox']},
  audition_video_frame = {$data->audition['framesBBox']},
  audition_video_ef = {$data->audition['fesBBox']},
@@ -517,15 +528,13 @@ order by 1,2;";
          FROM fnbr_db.timeline t
 where (tablename='objectsentencemm') or (tablename='staticannotationmm')";
         $rows = $dbFnbr->select($cmd, []);
-        $lastAnnotationTime = $rows[0]->lastAnnotationTime;
+        $lastAnnotationTime = is_object($rows[0]) ? $rows[0]->lastAnnotationTime : $rows[0]['lastAnnotationTime'];
         $dbDaisy = PersistenceManager::$capsule->connection('daisy');
         $cmd = "SELECT max(timeLastUpdate) as lastUpdateTime
          FROM dashboard
 ";
         $rows = $dbDaisy->select($cmd, []);
-        $lastUpdateTime = $rows[0]->lastUpdateTime;
-        var_dump($lastUpdateTime);
-        var_dump($lastAnnotationTime);
+        $lastUpdateTime = is_object($rows[0]) ? $rows[0]->lastUpdateTime : $rows[0]['lastUpdateTime'];
         return $lastAnnotationTime > $lastUpdateTime;
     }
 
@@ -540,6 +549,7 @@ where (tablename='objectsentencemm') or (tablename='staticannotationmm')";
         $data->frame2['framesText'] = $fields->frame2_text_frame;
         $data->frame2['fesText'] = $fields->frame2_text_ef;
         $data->frame2['lusText'] = $fields->frame2_text_lu;
+        $data->frame2['asText'] = $fields->frame2_text_as;
         $data->frame2['bbox'] = $fields->frame2_video_bbox;
         $data->frame2['framesBBox'] = $fields->frame2_video_frame;
         $data->frame2['fesBBox'] = $fields->frame2_video_ef;
@@ -550,6 +560,7 @@ where (tablename='objectsentencemm') or (tablename='staticannotationmm')";
         $data->audition['framesText'] = $fields->audition_text_frame;
         $data->audition['fesText'] = $fields->audition_text_ef;
         $data->audition['lusText'] = $fields->audition_text_lu;
+        $data->audition['asText'] = $fields->audition_text_as;
         $data->audition['bbox'] = $fields->audition_video_bbox;
         $data->audition['framesBBox'] = $fields->audition_video_frame;
         $data->audition['fesBBox'] = $fields->audition_video_ef;

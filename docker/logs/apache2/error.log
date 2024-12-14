@@ -1,0 +1,39 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.64.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Aug 17 00:00:22.006033 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.56 (Debian) PHP/8.2.4 configured -- resuming normal operations
+[Thu Aug 17 00:00:22.006092 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Aug 17 00:00:24.914872 2023] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.64.2. Set the 'ServerName' directive globally to suppress this message
+[Thu Aug 17 00:00:39.478616 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.56 (Debian) PHP/8.2.4 configured -- resuming normal operations
+[Thu Aug 17 00:00:39.478671 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Aug 17 00:01:05.204445 2023] [authz_core:error] [pid 17] [client 192.168.64.1:48094] AH01630: client denied by server configuration: /var/www/html/frame, referer: http://localhost:8004/frame/main
+[Thu Aug 17 00:01:08.248540 2023] [authz_core:error] [pid 17] [client 192.168.64.1:48094] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 00:01:37.620060 2023] [authz_core:error] [pid 18] [client 192.168.64.1:43448] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 00:01:39.986404 2023] [authz_core:error] [pid 18] [client 192.168.64.1:43448] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 00:01:40.418387 2023] [authz_core:error] [pid 18] [client 192.168.64.1:43448] AH01630: client denied by server configuration: /var/www/html/favicon.ico, referer: http://localhost:8004/
+[Thu Aug 17 00:05:45.984577 2023] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.96.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Aug 17 00:20:00.909769 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.1.0 configured -- resuming normal operations
+[Thu Aug 17 00:20:00.909820 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Aug 17 00:24:41.982238 2023] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.96.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Aug 17 00:39:30.430437 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.1.0 configured -- resuming normal operations
+[Thu Aug 17 00:39:30.430488 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Aug 17 00:39:35.365088 2023] [authz_core:error] [pid 17] [client 192.168.96.1:36516] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 00:39:35.903588 2023] [authz_core:error] [pid 17] [client 192.168.96.1:36516] AH01630: client denied by server configuration: /var/www/html/favicon.ico, referer: http://localhost:8004/
+[Thu Aug 17 00:39:36.648786 2023] [authz_core:error] [pid 17] [client 192.168.96.1:36516] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 00:39:37.089631 2023] [authz_core:error] [pid 17] [client 192.168.96.1:36516] AH01630: client denied by server configuration: /var/www/html/favicon.ico, referer: http://localhost:8004/
+[Thu Aug 17 01:46:56.254104 2023] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.112.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Aug 17 23:13:59.548908 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.1.0 configured -- resuming normal operations
+[Thu Aug 17 23:13:59.548962 2023] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Aug 17 23:14:05.711313 2023] [authz_core:error] [pid 18] [client 192.168.112.1:43478] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 23:14:06.189409 2023] [authz_core:error] [pid 18] [client 192.168.112.1:43478] AH01630: client denied by server configuration: /var/www/html/favicon.ico, referer: http://localhost:8004/
+[Thu Aug 17 23:14:24.420991 2023] [authz_core:error] [pid 19] [client 192.168.112.1:48496] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 23:14:24.939739 2023] [authz_core:error] [pid 19] [client 192.168.112.1:48496] AH01630: client denied by server configuration: /var/www/html/favicon.ico, referer: http://localhost:8004/
+[Thu Aug 17 23:15:20.788248 2023] [authz_core:error] [pid 20] [client 192.168.112.1:57696] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 23:15:21.215423 2023] [authz_core:error] [pid 20] [client 192.168.112.1:57696] AH01630: client denied by server configuration: /var/www/html/favicon.ico, referer: http://localhost:8004/
+[Thu Aug 17 23:16:37.767875 2023] [authz_core:error] [pid 21] [client 192.168.112.1:51906] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 23:16:38.013570 2023] [authz_core:error] [pid 21] [client 192.168.112.1:51906] AH01630: client denied by server configuration: /var/www/html/favicon.ico, referer: http://localhost:8004/
+[Thu Aug 17 23:16:47.100967 2023] [authz_core:error] [pid 22] [client 192.168.112.1:52954] AH01630: client denied by server configuration: /var/www/html/
+[Thu Aug 17 23:16:47.281243 2023] [authz_core:error] [pid 22] [client 192.168.112.1:52954] AH01630: client denied by server configuration: /var/www/html/favicon.ico, referer: http://localhost:8004/
+[Thu Aug 17 23:19:22.956899 2023] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully

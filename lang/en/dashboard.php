@@ -15,6 +15,7 @@ return [
     'frames' => 'Distinct Frames',
     'fes' => 'Distinct Frame Elements',
     'lus' => 'Distinct Lexical Units',
+    'as' => 'Annotation Sets',
     'cvs' => 'Distinct Object Types',
     'avgSentence' => 'Average per sentence',
     'avgSentenceUL' => 'Lexical Units',

@@ -24,6 +24,12 @@
             {{$data->audition['lusText']}}
         </div>
     </div>
+    <div class="card w-96 dashboard-card6">
+        <div class="header">{{__('dashboard.as')}}</div>
+        <div class="body">
+            {{$data->audition['asText']}}
+        </div>
+    </div>
 </div>
 <div class="dashboard-subtitle">{{__('dashboard.videoAnnotation')}}</div>
 <div class="flex flex-row gap-x-2">
