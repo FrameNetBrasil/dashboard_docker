@@ -14,12 +14,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::post('/graphql', function(Request $request, \Orkester\GraphQL\Executor $executor) {
-    $query = $request->input('query');
-    $variables = $request->input('variables', []);
-    return $executor->execute($query, $variables);
-});

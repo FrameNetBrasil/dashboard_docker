@@ -1,132 +1,220 @@
 <?php
 
 return [
-
+    'db' => env('DB_CONNECTION', 'fnbr'),
     'lang' => 1,
     'language' => 'pt',
     'defaultIdLanguage' => 1,
-    'pageTitle' => 'FNBr Dashboard',
-    'mainTitle' => 'Dashboard',
+    'defaultPassword' => 'default',
+    'pageTitle' => 'FNBR Dashboard',
+    'mainTitle' => 'FrameNet Brasil Dashboard',
+    'headerTitle' => 'FNBr Dashboard',
+    'footer' => '&copy; 2014-2024 FrameNet Brasil Lab, UFJF.',
+    'version' => 'v.4.01',
     'login' => [
-        'handler' => 'auth0',
+        'handler' => env('APP_AUTH'),
         'AUTH0_CLIENT_ID' => env('AUTH0_CLIENT_ID'),
         'AUTH0_CLIENT_SECRET' => env('AUTH0_CLIENT_SECRET'),
         'AUTH0_COOKIE_SECRET' => env('AUTH0_COOKIE_SECRET'),
         'AUTH0_DOMAIN' => env('AUTH0_DOMAIN'),
         'AUTH0_CALLBACK_URL' => env('AUTH0_CALLBACK_URL'),
         'AUTH0_BASE_URL' => env('AUTH0_BASE_URL'),
-//        'AUTH0_AUDIENCE' =>  $_ENV['AUTH0_AUDIENCE'],
-//        'AUTH0_MM_CLIENT_ID' =>  $_ENV['AUTH0_MM_CLIENT_ID'],
-//        'AUTH0_MM_CLIENT_SECRET' => $_ENV['AUTH0_MM_CLIENT_SECRET'],
     ],
     'actions' => [
-        'menu' => ['mainPanel', '/main/main', 'fnbrIconForm', '', [
-            'admin' => ['Admin', '/admin/main', 'wt-icon-admin', 'ADMIN', [
-//            'users' => ['Users', '/auth/user/main', 'material wt-icon-user', 'ADMIN', []],
-//            'annostatus' => ['Anno Status', '/admin/annostatus/main', 'material wt-icon-admin', 'ADMIN', []],
-//            'domain' => ['Domain', '/admin/domain/main', 'material wt-icon-admin', 'ADMIN', []],
-//            'relationgroup' => ['Relation Group', '/admin/relationgroup/main', 'material wt-icon-admin', 'ADMIN',  []],
-//            'type' => ['Type', 'admin/type/main', 'material wt-icon-admin', 'ADMIN', []],
-//            'relationgroupstructure' => ['Relation Group', '/structure/relationgroup/main', 'material wt-icon-structure', 'ADMIN',  []],
-//            'relationtypestructure' => ['Relation Type', '/structure/relationtype/main', 'material wt-icon-structure', 'ADMIN', []],
-//            'layergroupstructure' => ['Layer Group', '/structure/layergroup/main', 'material wt-icon-structure', 'ADMIN',  []],
-//            'layertypestructure' => ['Layer Type', '/structure/layertype/main', 'material wt-icon-structure', 'ADMIN', []],
-//            'constrainttype' => ['Constraint Type', '/structure/constrainttype/main', 'material wt-icon-structure', 'ADMIN', []],
-//            'genre' => ['Genre', '/structure/genre/main', 'material wt-icon-structure', 'ADMIN',  []],
-//            'conceptstructure' => ['Concept', '/structure/concept/main', 'material wt-icon-concept', 'ADMIN', []],
-//            'semantictypestructure' => ['Semantic Type', '/structure/semantictype/main', 'material wt-icon-st', 'ADMIN', []],
-            ]],
-            'structure' => ['Structure', '', '', '', [
-                'frame' => ['Frames', '/frame/main', 'wt-icon-frame', '', []],
-                'cxn' => ['Constructions', '/cxn/main', 'wt-icon-cxn', '', []],
-                'semanticType' => ['Semantic Types', '/semanticType/main', 'wt-icon-cxn', '', []]
-            ]],
-
-//        'frame' => ['Frames', '/frame/main', 'wt-icon-frame', '', [
-//            'framereport' => ['Frames', '/report/frame/main', 'material wt-icon-frame', '',  []],
-//            'domaingrapher' => ['Grapher by Domain', '/grapher/domain/main', 'material wt-icon-grapher', '',  []],
-//            'fullgrapher' => ['Grapher Frames & CxN', '/grapher/grapher/main', 'material wt-icon-grapher', '',  []],
-//            'frameeditor' => ['Relations Editor', '/visualeditor/frame/main', 'material wt-icon-frame', 'MASTER', []],
-//            'corenesseditor' => ['Coreness Editor', '/visualeditor/frame/coreness', 'material wt-icon-fe', 'MASTER', []],
-//        ]],
-//        'cxn' => ['Constructions', '/cxn/main', 'wt-icon-cxn', '', [
-//            'cxnreport' => ['Constructicons', '/report/cxn/main', 'material wt-icon-cxn', '',  []],
-//            'ccngrapher' => ['CCN Grapher', '/grapher/ccn/main', 'material wt-icon-grapher', '',  []],
-//            'cxneditor' => ['Relations Editor', '/visualeditor/cxn/main', 'material wt-icon-cxn', 'MASTER',  []],
-//            'cxnframeeditor' => ['CxN-Frame Relation', '/visualeditor/cxnframe/main', 'material wt-icon-cxn', 'MASTER', []],
-//        ]],
-//        'lexicon' => ['Lexicon', '/report/lu/main', 'wt-icon-lexicon', '', [
-//            'lureport' => ['LU', '/report/lu/main', 'material wt-icon-lu', '',  []],
-//            'lemmas' => ['Lemmas', '/structure/lemma/main', 'material wt-icon-lemma', 'MASTER', []],
-//            'qualia' => ['Qualia', '/structure/qualia/main', 'material wt-icon-qualia', 'MASTER', []],
-//        ]],
-//        'corpus' => ['Corpus', '/structure/corpus/main', 'wt-icon-corpus', 'MASTER', [
-//            'corpusAnnotationReport' => ['Corpus Annotation', '/report/corpus/main', 'material wt-icon-corpus', '',[]],
-//            'corpusstructure' => ['Corpus/Document', '/structure/corpus/main', 'material wt-icon-corpus', 'MASTER', []],
-//        ]],
-//        'corpusannotation' => ['Text Annotation', '/annotationCorpus/main', 'wt-icon-annotation', 'ANNO',  [
-//        ]],
-//        'staticannotation' => ['Static Annotation', '/annotationStatic/main', 'wt-icon-annotation-static', 'ANNO',  [
-//        ]],
-//        'dynamicannotation' => ['Dynamic Annotation', '/annotationDynamic/main', 'wt-icon-annotation-dynamic', 'ANNO',  [
-//        ]],
-//        'multimodal' => ['Multimodal', '/reportMultimodal/main', 'wt-icon-annotation-dynamic', '', [
-//        ]],
-//        'grapher' => ['Grapher', '/grapherFrame/main', 'wt-icon-frame', '', [
-//            'frameGrapher' => ['Frame', '/grapherFrame/main', 'wt-icon-frame', '',[]],
-//        ]],
-            'report' => ['Report', '', '', '', [
-                'multimodal' => ['Multimodal', '/reportMultimodal/main', 'wt-icon-annotation-dynamic', '', []],
-            ]],
-
-//        'utils' => ['Utils', '/utils/main', 'wt-icon-utils', 'MASTER',  [
-//            'importLexWf' => ['Import Wf-Lexeme', '/utils/import/formImportLexWf', 'material wt-icon-util', 'MASTER', []],
-//            'wflex' => ['Search Wf-Lexeme', '/admin/wflex/main', 'material wt-icon-util', 'MASTER', []],
-//            'registerWfLex' => ['Register Wf-Lexeme', '/utils/register/formRegisterLexWf', 'material wt-icon-util', 'MASTER',  []],
-//            'registerLemma' => ['Register Lemma', '/utils/register/formRegisterLemma', 'material wt-icon-util', 'MASTER',  []],
-//            'exportCxnFS' => ['Export Cxn as FS', '/utils/export/formExportCxnFS', 'material wt-icon-util', 'ADMIN',  []],
-//            'exportCxnJson' => ['Export Cxn', '/utils/export/formExportCxn', 'material wt-icon-util', 'ADMIN', []],
-//        ]],
+        'report' => ['Report', '/report', '', [
+            'reportframe' => ['Frame', '/report/frame', '', []],
+            'reportlu' => ['LU', '/report/lu', '', []],
+            'networkstructure' => ['Network', '/network', 'MASTER', []],
+            'reportst' => ['SemanticType', '/report/semanticType', '', []],
+            'reportc5' => ['C5', '/report/c5', '', []],
+            'reporttqr' => ['TQR', '/report/qualia', '', []],
+            'cxnreport' => ['Constructicons', '/report/cxn', '', []],
+//            'corpusAnnotationReport' => ['Corpus Panes', '/corpus/report', 'corpusreport', '', 1, []],
         ]],
-        'user' => ['userPanel', '/admin/user/main', 'fnbrIconForm', '', [
-            'language' => ['Language', '/main/language', 'wt-lang-en', '', [
-                'en' => ['English', '/main/changeLanguage/en', 'wt-lang-en', '', []],
-                'pt' => ['Português', '/main/changeLanguage/pt', 'wt-lang-pt', '', []],
-            ]],
-//        'profile' => ['Profile', '/main/profile', 'wt-icon-user', '',  [
-//            'myprofile' => ['My Profile', '/profile/formMyProfile', 'wt-icon-profile', '',  []],
-//            'logout' => ['Logout', '/logout', 'material wt-icon-logout', '', []],
+        'grapher' => ['Grapher', '/grapher', '', [
+            'framegrapher' => ['Frames', '/grapher/frame', '', []],
+            'domaingrapher' => ['Domain', '/grapher/domain', '', []],
+            'scenariographer' => ['Scenario', '/grapher/scenario', '', []],
+//            'fullgrapher' => ['Frames & CxN', '/grapher', 'fullgrapher', '', '', []],
+//            'domaingrapher' => ['Frames by Domain', '/domain/grapher', 'domaingrapher', '', '', []],
+//            'ccngrapher' => ['Constructicon', '/ccn/grapher', 'ccngrapher', '', '', []],
+        ]],
+        'annotation' => ['Annotation', '/annotation', 'MASTER', [
+//            'lexicalAnnotation' => ['Frame Mode', '/lexicalAnnotation', 'lexicalAnnotation', '', 1, []],
+//            'cnxAnnotation' => ['Construction Mode', '/constructionalAnnotation', 'cxnAnnotation', '', 1, []],
+            //'corpusAnnotation' => ['Corpus Mode', '/annotation/corpus', 'MASTER', []],
+//            'staticFrameMode1' => ['Static Frame Mode 1', '/annotation/staticFrameMode1', 'MASTER', []],
+//            'staticFrameMode2' => ['Static Frame Mode 2', '/annotation/staticFrameMode2', 'MASTER', []],
+            'staticEvent' => ['Static Event', '/annotation/staticEvent', 'MASTER', []],
+            'fe' => ['FE', '/annotation/fe', 'MASTER', []],
+            'dynamicMode' => ['Dynamic Mode', '/annotation/dynamicMode', 'MASTER', []],
+            'fullText' => ['Full text', '/annotation/fullText', 'MASTER', []],
+            'staticBBox' => ['Static BBox', '/annotation/staticBBox', 'MASTER', []],
+            'deixis' => ['Deixis', '/annotation/deixis', 'MASTER', []],
+//            'layers' => ['Manage Layers', '/layer/formManager', 'fa fa-list fa16px', 'JUNIOR', 1, []],
+        ]],
+        'structure' => ['Structure', '/structure', 'MASTER', [
+            'framestructure' => ['Frame', '/frame', 'MASTER', []],
+//            'corpusstructure' => ['Corpus', '/corpus', 'MASTER', []],
+            'lexiconstructure' => ['Lexicon', '/lexicon', 'MASTER', []],
+            //'sentence' => ['Sentence', '/sentence', 'MASTER', []],
+            'lucandidate' => ['LU candidate', '/luCandidate', 'MASTER', []],
+//            'tqr2structure' => ['TQR2', '/tqr2', 'MASTER', []],
+//            'cxnstructure' => ['Construction', '/cxn', 'MASTER', []],
+//            'lemmastructure' => ['Lemma', '/lemma', 'MASTER', []],
+//            'lexemestructure' => ['Lexeme', '/lexeme', 'MASTER', []],
+//            'qualia' => ['Qualia', '/qualia', 'menu-qualia', 'MASTER', 1, []],
+//            'constrainttype' => ['Constraint Type', '/constrainttype', 'menu-constraint', 'MASTER', 1, []],
+//            'conceptstructure' => ['Concept', '/concept', 'menu-concept', '', 1, []],
+//            'decisiontree' => ['Decision tree', '/decisiontree', 'MASTER', []],
+        ]],
+        'manager' => ['Manager', '/manager', 'MANAGER', [
+            'projectDataset' => ['Project/Dataset', '/project', 'MANAGER', []],
+            'taskUser' => ['Task/User', '/task', 'MANAGER', []],
+        ]],
+        'admin' => ['Admin', '/admin', 'ADMIN', [
+            'groupUser' => ['Group/User', '/user', 'ADMIN', []],
+            'corpusDocument' => ['Corpus/Document', '/corpus', 'ADMIN', []],
+            'videoDocument' => ['Video/Document', '/video', 'ADMIN', []],
+            'imageDocument' => ['Image/Document', '/image', 'ADMIN', []],
+            'domainSemantictype' => ['Domain/SemanticType', '/semanticType', 'ADMIN', []],
+            'layerGenericlabel' => ['Layer/GenericLabel', '/layers', 'ADMIN', []],
+            'relations' => ['Relations', '/relations', 'ADMIN', []],
+//            'type' => ['Types', '/type', 'ADMIN', []],
+//            'genre' => ['Genres', '/genre', 'ADMIN', []],
+//            'layer' => ['Layers', '/layer', 'ADMIN', []],
+//            'constraint' => ['Constraints', '/constraint', 'ADMIN', []],
+        ]],
+//        'editor' => ['Editor', 'main/visualeditor', 'edit', 'MASTER', 1, [
+//            'frameeditor' => ['Frame Relation', '/visualeditor/frame/main', 'fa fa-list-alt fa16px', 'MASTER', 1, []],
+//            'corenesseditor' => ['Coreness', '/visualeditor/frame/coreness', 'fa fa-th-list fa16px', 'MASTER', 1, []],
+//            'cxneditor' => ['CxN Relation', '/visualeditor/cxn/main', 'fa fa-list-alt fa16px', 'MASTER', 1, []],
+//            'cxnframeeditor' => ['CxN-Frame Relation', '/visualeditor/cxnframe/main', 'fa fa-list-alt fa16px', 'MASTER', 1, []],
 //        ]],
-        ]]
+        'utils' => ['Utils', '/utils', 'ADMIN', [
+//            'importLexWf' => ['Import Wf-Lexeme', '/utils/importLexWf', 'utilimport', 'MASTER', 1, []],
+//            'wflex' => ['Search Wf-Lexeme', '/admin/wflex', 'utilwflex', '', 1, []],
+//            'registerWfLex' => ['Register Wf-Lexeme', '/utils/registerLexWf', 'registerwflex', 'MASTER', 1, []],
+//            'registerLemma' => ['Register Lemma', '/utils/registerLemma', 'registerlemma', 'MASTER', 1, []],
+            'importFullText' => ['Import FullText', '/utils/importFullText', 'MASTER', []],
+//            'exportCxnFS' => ['Export Cxn as FS', '/utils/exportCxnFS', 'exportcxnfs', 'ADMIN', 1, []],
+//            'exportCxnJson' => ['Export Cxn', '/utils/exportCxn', 'exportcxnjson', 'ADMIN', 1, []],
+        ]],
     ],
-    'dashboard' => [
-        'en' => [
-            'subcorpus' => 'Subcorpus',
-            'annotatorProfile' => 'Annotator profile',
-            'textualAnnotation' => "Anotação de Texto",
-            'videoAnnotation' => 'Anotação de Vídeo',
-            'imageAnnotation' => 'Anotação de Imagem',
-            'averages' => 'Médias',
-            'ptt' => "PTT: Tradução para Português",
-            'pto' => "PTO: Português Original",
-            'eno' => "ENO: Inglês Original",
-            'annotatedSentences' => 'Sentenças anotadas',
-            'annotatedImages' => 'Imagens anotadas',
-            'frames' => 'Frames distintos',
-            'fe' => 'Elementos de Frame distintos',
-            'lu' => 'Unidades Lexicais distintas',
-            'bbox' => 'Bounding Boxes anotadas',
-            'cv' => 'Tipos de Objetos distintos',
-            'avgSentence' => 'Média por sentença',
-            'avgSentenceUL' => 'Unidades Lexicais',
-            'avgBBox' => 'Tempo médio por Boundin Box',
-            'avgBBoxSeconds' => 'segundos'
-
+    'user' => ['userPanel', '/admin/user/main', '', [
+        'language' => ['Language', '/language', '', [
+            '2' => ['English', '/changeLanguage/en', '', []],
+            '1' => ['Portuguese', '/changeLanguage/pt', '', []],
+        ]],
+        'profile' => ['Profile', '/profile', '', [
+            'myprofile' => ['My Profile', '/profile', '', []],
+            'logout' => ['Logout', '/logout', '', []],
+        ]],
+    ]],
+    'relations' => [
+        'rel_inheritance' => [
+            'direct' => "Is inherited by",
+            'inverse' => "Inherits from",
+            'color' => '#FF0000'
         ],
-        'pt' => [
-            'subcorpus' => 'Subcorpus',
-            'annotatorProfile' => 'Perfil do anotador'
+        'rel_subframe' => [
+            'direct' => "Has as subframe",
+            'inverse' => "Is subframe of",
+            'color' => '#0000FF'
         ],
+        'rel_perspective_on' => [
+            'direct' => "Is perspectivized in",
+            'inverse' => "Perspective on",
+            'color' => '#fdbeca'
+        ],
+        'rel_using' => [
+            'direct' => "Is used by",
+            'inverse' => "Uses",
+            'color' => '#006301'
+        ],
+        'rel_precedes' => [
+            'direct' => "Precedes",
+            'inverse' => "Is preceded by",
+            'color' => '#000000'
+        ],
+        'rel_causative_of' => [
+            'direct' => "Is causative of",
+            'inverse' => "Has as causative",
+            'color' => '#fdd101'
+        ],
+        'rel_inchoative_of' => [
+            'direct' => "Is inchoative of",
+            'inverse' => "Has as inchoative",
+            'color' => '#897201'
+        ],
+        'rel_see_also' => [
+            'direct' => "See also",
+            'inverse' => "Has as see_also",
+            'color' => '#9e1fee'
+        ],
+        'rel_inheritance_cxn' => [
+            'direct' => "Is inherited by",
+            'inverse' => "Inherits from",
+            'color' => '#FF0000'
+        ],
+        'rel_daughter_of' => [
+            'direct' => "Is daughter of",
+            'inverse' => "Has as daughter",
+            'color' => '#0000FF'
+        ],
+        'rel_subtypeof' => [
+            'direct' => "Is subtype of",
+            'inverse' => "Has as subtype",
+            'color' => '#9e1fee'
+        ],
+        'rel_standsfor' => [
+            'direct' => "Stands for",
+            'inverse' => "Has as stands_for",
+            'color' => '#9e1fee'
+        ],
+        'rel_partwhole' => [
+            'direct' => "Part of",
+            'inverse' => "Has as part",
+            'color' => '#9e1fee'
+        ],
+        'rel_hasconcept' => [
+            'direct' => "Has concept",
+            'inverse' => "Is concept of",
+            'color' => '#9e1fee'
+        ],
+        'rel_coreset' => [
+            'direct' => "CoreSet",
+            'inverse' => "CoreSet",
+            'color' => '##000'
+        ],
+        'rel_excludes' => [
+            'direct' => "Excludes",
+            'inverse' => "Excludes",
+            'color' => '#000'
+        ],
+        'rel_requires' => [
+            'direct' => "Requires",
+            'inverse' => "Requires",
+            'color' => '#000'
+        ],
+        'rel_structure' => [
+            'direct' => "Structure",
+            'inverse' => "Structured by",
+            'color' => '#000'
+        ],
+    ],
+    'fe' => [
+        'icon' => [
+            "cty_core" => "black circle",
+            "cty_core-unexpressed" => "black dot circle",
+            "cty_peripheral" => "black stop circle outline",
+            "cty_extra-thematic" => "black circle outline",
+        ],
+        'coreness' => [
+            "cty_core" => "Core",
+            "cty_core-unexpressed" => "Core-Unexpressed",
+            "cty_peripheral" => "Peripheral",
+            "cty_extra-thematic" => "Extra-thematic",
+        ]
     ]
-
 ];

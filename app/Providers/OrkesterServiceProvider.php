@@ -2,17 +2,14 @@
 
 namespace App\Providers;
 
-use DI\ContainerBuilder;
-use Illuminate\Container\Container;
-use Illuminate\Support\Facades\Blade;
+use App\Repositories\Mapping;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Monolog\Logger;
-use Orkester\GraphQL\GraphQLConfiguration;
-use Orkester\Persistence\DatabaseConfiguration;
-use Orkester\Persistence\PersistenceManager;
-use PDO;
+use Orkester\Database\PersistenceManager;
+
+//use Orkester\Persistence\PersistenceManager;
 
 class OrkesterServiceProvider extends ServiceProvider
 {
@@ -21,31 +18,19 @@ class OrkesterServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(GraphQLConfiguration::class, function () {
-            $data = require \Illuminate\Support\Facades\App::configPath('api.php');
-            return new GraphQLConfiguration(
-                $data['resources'],
-                $data['services'],
-                Container::getInstance(),
-                $this->app->hasDebugModeEnabled()
-            );
-        });
-        PersistenceManager::init(
-            $this->app->get('db'),
-            Log::channel('stack')
-        );
+//        Log::withContext([
+//            'request-addr' => $_SERVER['REMOTE_ADDR']
+//        ]);
+
+//        PersistenceManager::init(
+//            $this->app->get('db'),
+//            Log::channel(env('LOG_DB_CHANNEL')),
+//            Mapping::class
+//        );
 
         DB::enableQueryLog();
         DB::listen(function ($query) {
-            if (env('LOG_TRACE_PORT') != '0') {
-                Log::channel('stack')->info(
-                    $query->sql,
-                    [
-                        'bindings' => $query->bindings,
-                        'time' => $query->time
-                    ]
-                );
-            }
+            debugQuery($query->sql, $query->bindings);
         });
     }
 
@@ -54,7 +39,9 @@ class OrkesterServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::anonymousComponentPath(app_path("UI/Components"), 'wt');
-        Blade::anonymousComponentPath(app_path("UI/Layouts"), 'wt');
+        View::addExtension('js','php');
+//        Blade::anonymousComponentPath(app_path("UI/Components"), 'wt');
+//        Blade::anonymousComponentPath(app_path("UI/Layouts"), 'wt');
+        //Blade::anonymousComponentPath(app_path("UI/Views"), 'wt');
     }
 }
