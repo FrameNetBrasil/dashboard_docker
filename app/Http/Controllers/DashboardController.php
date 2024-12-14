@@ -9,6 +9,8 @@ use App\Services\GTService;
 use App\Services\McGovernService;
 use Collective\Annotations\Routing\Attributes\Attributes\Get;
 use Collective\Annotations\Routing\Attributes\Attributes\Middleware;
+use Illuminate\Support\Facades\App;
+use Illuminate\Http\Request;
 
 #[Middleware(name: 'web')]
 class DashboardController extends Controller
@@ -16,6 +18,8 @@ class DashboardController extends Controller
     #[Get(path: '/')]
     public function main()
     {
+        $lang = AppService::getCurrentLanguageCode();
+        App::setLocale($lang);
         session(['currentController' => "Reinventa"]);
 //        if (DashboardService::mustCalculate()) {
             $frame2 = DashboardService::frame2();
