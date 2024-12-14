@@ -2,53 +2,83 @@
 
 namespace App\Http\Controllers;
 
+use Collective\Annotations\Routing\Attributes\Attributes\Get;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Mauricius\LaravelHtmx\Http\HtmxRequest;
-use Mauricius\LaravelHtmx\Http\HtmxResponse;
-use Mauricius\LaravelHtmx\Http\HtmxResponseClientRedirect;
-use Orkester\Manager;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
     protected object $data;
-    protected string $notify;
+    protected array $hx_trigger;
 
     public function __construct(
-        protected readonly HtmxRequest $request
+        protected readonly Request $request
     )
     {
-        $this->data = Manager::getData();
-        $this->data->currentUrl = $request->getCurrentUrl() ?? '/' . $request->path();
-        $this->notify = '';
+        $this->hx_trigger = [];
     }
 
-    public function render(string $view)
+    #[Get(path: '/empty')]
+    public function empty()
+    {
+        $response = response('', 200);
+        return $response;
+    }
+
+    public function render(string $viewName, array $data = [], ?string $fragment = null)
     {
         $response = response()
-            ->view($view, ['data' => $this->data]);
-        if ($this->notify != '') {
-            $response->header('HX-Trigger', $this->notify);
+            ->view($viewName, $data);
+        if (!is_null($fragment)) {
+            $response->fragment($fragment);
+        }
+        if (!empty($this->hx_trigger)) {
+            $trigger = json_encode($this->hx_trigger);
+            $response->header('HX-Trigger', $trigger);
         }
         return $response;
     }
 
-    public function clientRedirect(string $url) {
-        return new HtmxResponseClientRedirect($url);
+    public function clientRedirect(string $url)
+    {
+        $response = response();
+        return response('')
+            ->withHeaders([
+                'HX-Redirect' => $url
+            ]);
+    }
+
+    public function redirect(string $url)
+    {
+        return response('')
+            ->withHeaders([
+                'HX-Redirect' => $url
+            ]);
     }
 
     public function notify($type, $message)
     {
-//        HX-Trigger: {"showMessage":"Here Is A Message"}
-        $this->notify = json_encode([
-            'notify' => [
-                'type' => $type,
-                'message' => $message
-            ]
-        ]);
+        $this->hx_trigger['notify'] = [
+            'type' => $type,
+            'message' => $message
+        ];
+    }
+
+    public function trigger(string $trigger, array $params = [])
+    {
+        $this->hx_trigger[$trigger] = $params;
+    }
+
+    public function renderNotify($type, $message)
+    {
+        $this->notify($type, $message);
+        $trigger = json_encode($this->hx_trigger);
+        $response = response('', 204)->header('HX-Trigger', $trigger);
+        return $response;
     }
 
 }

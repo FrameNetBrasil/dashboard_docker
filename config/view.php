@@ -14,8 +14,9 @@ return [
     */
 
     'paths' => [
-        app_path('UI/Views'),
-        resource_path('views'),
+        app_path('UI'),
+        app_path('UI/views'),
+//        resource_path('views'),
     ],
 
     /*

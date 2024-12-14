@@ -2,26 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\AnnotationSetModel;
-use App\Models\CorpusModel;
-use App\Models\DocumentModel;
-use App\Models\DynamicBBoxMMModel;
-use App\Models\DynamicObjectMMModel;
-use App\Models\LabelModel;
-use App\Models\ObjectFrameMMModel;
-use App\Models\ObjectMMModel;
-use App\Models\ObjectSentenceMMModel;
-use App\Models\SentenceModel;
-use App\Models\StaticAnnotationMMModel;
-use App\Models\StaticObjectMMModel;
-use App\Models\StaticObjectSentenceMMModel;
-use App\Models\UserModel;
-use Carbon\Carbon;
+use App\Database\Criteria;
 use Illuminate\Support\Facades\App;
-use Orkester\Persistence\Criteria\Criteria;
-use Orkester\Persistence\Enum\Join;
+use Illuminate\Support\Facades\DB;
 use Orkester\Persistence\PersistenceManager;
-use PHPSQLParser\builders\IndexTypeBuilder;
 
 class DashboardService //extends AppService
 {
@@ -198,12 +182,13 @@ class DashboardService //extends AppService
     // Frame2
     //
 
-    private static function getSentencesFrame2()
+    private static function getSentencesFrame2($query)
     {
-        return SentenceModel::getCriteria()
-            ->distinct()
-            ->select("idSentence")
-            ->where('documents.corpus.entry', 'IN', [
+        $query->from("view_document_sentence as ds")
+            ->select("ds.idSentence")
+            ->join("document as d","ds.idDocument","=","d.idDocument")
+            ->join("corpus as c","d.idCorpus","=","c.idCorpus")
+            ->where("c.entry","IN",[
                 'crp_pedro_pelo_mundo'
             ]);
     }
@@ -211,59 +196,102 @@ class DashboardService //extends AppService
     public static function frame2(): array
     {
         $result = [];
-        $sentences = self::getSentencesFrame2();
-        $count = AnnotationSetModel::getCriteria()
+        $sentences = function ($query) {
+            self::getSentencesFrame2($query);
+        };
+        $count = Criteria::table("annotationset")
             ->where('idSentence', 'IN', $sentences)
-            ->get("count(distinct idSentence) as n");
-        $result['sentences'] = $count[0]['n'];
-        $count = DynamicObjectMMModel::getCriteria()
-            ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('document.corpus.entry', 'IN', ['crp_pedro_pelo_mundo'])
-            ->get("count(distinct idDynamicObjectMM) as n");
-        $result['bbox'] = $count[0]['n'];
-        $count1 = AnnotationSetModel::getCriteria()
+            ->selectRaw("count(distinct idSentence) as n")
+            ->all();
+        $result['sentences'] = $count[0]->n;
+        $count = Criteria::table("view_dynamicobject_boundingbox as bb")
+            ->join("view_video_dynamicobject as vd","bb.idDynamicObject","=","vd.idDynamicObject")
+            ->join("view_document_video as dv","vd.idVideo","=","dv.idVideo")
+            ->join("dynamicobject as do","vd.idDynamicObject","=","do.idDynamicObject")
+            ->join("view_annotation as a","do.idAnnotationObject","=","a.idAnnotationObject")
+            ->join("frameelement as fe","a.idEntity","=","fe.idEntity")
+            ->join("document as d","dv.idDocument","=","d.idDocument")
+            ->join("corpus as c","d.idCorpus","=","c.idCorpus")
+            ->where('c.entry', 'IN', ['crp_pedro_pelo_mundo'])
+            ->selectRaw("count(distinct bb.idBoundingBox) as n")
+            ->all();
+        $result['bbox'] = $count[0]->n;
+        $count1 = Criteria::table("view_annotation_text_fe as afe")
+            ->join("annotationset as a","afe.idAnnotationSet","=","a.idAnnotationSet")
+            ->join("frameelement as fe","afe.idFrameElement","=","fe.idFrameElement")
+            ->where('a.idSentence', 'IN', $sentences)
+            ->selectRaw("count(distinct fe.idFrame) as n")
+            ->all();
+        $count2 = Criteria::table("view_dynamicobject_boundingbox as bb")
+            ->join("view_video_dynamicobject as vd","bb.idDynamicObject","=","vd.idDynamicObject")
+            ->join("view_document_video as dv","vd.idVideo","=","dv.idVideo")
+            ->join("dynamicobject as do","vd.idDynamicObject","=","do.idDynamicObject")
+            ->join("view_annotation as a","do.idAnnotationObject","=","a.idAnnotationObject")
+            ->join("frameelement as fe","a.idEntity","=","fe.idEntity")
+            ->join("document as d","dv.idDocument","=","d.idDocument")
+            ->join("corpus as c","d.idCorpus","=","c.idCorpus")
+            ->where('c.entry', 'IN', ['crp_pedro_pelo_mundo'])
+            ->selectRaw("count(distinct fe.idFrame) as n")
+            ->all();
+        $result['framesText'] = $count1[0]->n;
+        $result['framesBBox'] = $count2[0]->n;
+        $count1 = Criteria::table("view_annotation_text_fe as afe")
+            ->join("annotationset as a","afe.idAnnotationSet","=","a.idAnnotationSet")
+            ->where('a.idSentence', 'IN', $sentences)
+            ->selectRaw("count(distinct afe.idFrameElement) as n")
+            ->all();
+        $count2 = Criteria::table("view_dynamicobject_boundingbox as bb")
+            ->join("view_video_dynamicobject as vd","bb.idDynamicObject","=","vd.idDynamicObject")
+            ->join("view_document_video as dv","vd.idVideo","=","dv.idVideo")
+            ->join("dynamicobject as do","vd.idDynamicObject","=","do.idDynamicObject")
+            ->join("view_annotation as a","do.idAnnotationObject","=","a.idAnnotationObject")
+            ->join("frameelement as fe","a.idEntity","=","fe.idEntity")
+            ->join("document as d","dv.idDocument","=","d.idDocument")
+            ->join("corpus as c","d.idCorpus","=","c.idCorpus")
+            ->where('c.entry', 'IN', ['crp_pedro_pelo_mundo'])
+            ->selectRaw("count(distinct fe.idFrameElement) as n")
+            ->all();
+        $count3 = Criteria::table("annotationset")
             ->where('idSentence', 'IN', $sentences)
-            ->get("count(distinct lu.idFrame) as n");
-        $count2 = DynamicObjectMMModel::getCriteria()
-            ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('document.corpus.entry', 'IN', ['crp_pedro_pelo_mundo'])
-            ->get("count(distinct frameElement.idFrame) as n");
-        $result['framesText'] = $count1[0]['n'];
-        $result['framesBBox'] = $count2[0]['n'];
-        $count1 = LabelModel::getCriteria()
-            ->where('layer.annotationSet.sentence.idSentence', 'IN', $sentences)
-            ->get("count(distinct frameElement.idFrameElement) as n");
-        $count2 = DynamicObjectMMModel::getCriteria()
-            ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->where('document.corpus.entry', 'IN', ['crp_pedro_pelo_mundo'])
-            ->get("count(distinct idFrameElement) as n");
-        $count3 = AnnotationSetModel::getCriteria()
+            ->selectRaw("count(*) as n")
+            ->all();
+        $result['fesText'] = $count1[0]->n;
+        $result['fesBBox'] = $count2[0]->n;
+        $result['asText'] = $count3[0]->n;
+        $count1 = Criteria::table("annotationset")
             ->where('idSentence', 'IN', $sentences)
-            ->get("count(*) as n");
-        $result['fesText'] = $count1[0]['n'];
-        $result['fesBBox'] = $count2[0]['n'];
-        $result['asText'] = $count3[0]['n'];
-        $count1 = AnnotationSetModel::getCriteria()
+            ->selectRaw("count(distinct idLU) as n")
+            ->all();
+        $count2 = Criteria::table("view_dynamicobject_boundingbox as bb")
+            ->join("view_video_dynamicobject as vd","bb.idDynamicObject","=","vd.idDynamicObject")
+            ->join("view_document_video as dv","vd.idVideo","=","dv.idVideo")
+            ->join("dynamicobject as do","vd.idDynamicObject","=","do.idDynamicObject")
+            ->join("view_annotation as a","do.idAnnotationObject","=","a.idAnnotationObject")
+            ->join("lu","a.idEntity","=","lu.idEntity")
+            ->join("document as d","dv.idDocument","=","d.idDocument")
+            ->join("corpus as c","d.idCorpus","=","c.idCorpus")
+            ->where('c.entry', 'IN', ['crp_pedro_pelo_mundo'])
+            ->selectRaw("count(distinct lu.idLU) as n")
+            ->all();
+        $result['lusText'] = $count1[0]->n;
+        $result['lusBBox'] = $count2[0]->n;
+        $counts = Criteria::table("annotationset")
             ->where('idSentence', 'IN', $sentences)
-            ->get("count(distinct lu.idLU) as n");
-        $count2 = DynamicObjectMMModel::getCriteria()
-            ->where('idLU', 'IS', 'NOT NULL')
-            ->where('document.corpus.entry', 'IN', ['crp_pedro_pelo_mundo'])
-            ->get("count(distinct idLU) as n");
-        $result['lusText'] = $count1[0]['n'];
-        $result['lusBBox'] = $count2[0]['n'];
-        $counts = AnnotationSetModel::getCriteria()
-            ->where('sentence.idSentence', 'IN', $sentences)
-            ->get(["count(idAnnotationSet) as a", "count(distinct idSentence) as s"]);
+            ->selectRaw("count(idAnnotationSet) as a, count(distinct idSentence) as s")
+            ->all();
         $decimal = (App::currentLocale() == 'pt') ? ',' : '.';
-        $result['avgAS'] = number_format($counts[0]['a'] / $counts[0]['s'], 3, $decimal, '');
-        $count = DynamicBBoxMMModel::getCriteria()
-            ->where('dynamicObjectMM.document.corpus.entry', 'IN', ['crp_pedro_pelo_mundo'])
-            ->groupBy("idDynamicObjectMM")
-            ->get("count(*) as n");
+        $result['avgAS']= number_format($counts[0]->a / $counts[0]->s, 3, $decimal, '');
+        $count = Criteria::table("dynamicobject as do")
+            ->join("view_video_dynamicobject as vd","vd.idDynamicObject","=","do.idDynamicObject")
+            ->join("view_document_video as dv","vd.idVideo","=","dv.idVideo")
+            ->join("document as d","dv.idDocument","=","d.idDocument")
+            ->join("corpus as c","d.idCorpus","=","c.idCorpus")
+            ->where('c.entry', 'IN', ['crp_pedro_pelo_mundo'])
+            ->selectRaw("count(distinct do.idDynamicObject) as n")
+            ->all();
         $sum = 0;
         foreach ($count as $row) {
-            $sum += $row['n'];
+            $sum += $row->n;
         }
         $avg = ($sum / count($count)) * 0.040; // 40 ms por frame
         $result['avgDuration'] = number_format($avg, 3, $decimal, '');
@@ -482,7 +510,7 @@ order by 1,2;";
         $frame2_avg_obj = str_replace(',', '.', $data->frame2['avgAS']);
         $audition_avg_sentence = str_replace(',', '.', $data->audition['avgDuration']);
         $audition_avg_obj = str_replace(',', '.', $data->audition['avgAS']);
-        $cmd = "update dashboard set 
+        $cmd = "update dashboard set
  timeLastUpdate = '{$now}',
  frame2_text_sentence = {$data->frame2['sentences']},
  frame2_text_frame = {$data->frame2['framesText']},
@@ -523,17 +551,27 @@ order by 1,2;";
 
     public static function mustCalculate(): bool
     {
-        $dbFnbr = PersistenceManager::$capsule->connection('fnbr');
-        $cmd = "SELECT max(tlDateTime) as lastAnnotationTime
+//        $dbFnbr = PersistenceManager::$capsule->connection('fnbr');
+//        $cmd = "SELECT max(tlDateTime) as lastAnnotationTime
+//         FROM fnbr_db.timeline t
+//where (tablename='objectsentencemm') or (tablename='staticannotationmm')";
+//        $rows = $dbFnbr->select($cmd, []);
+
+        $rows = DB::connection('fnbr')->select("SELECT max(tlDateTime) as lastAnnotationTime
          FROM fnbr_db.timeline t
-where (tablename='objectsentencemm') or (tablename='staticannotationmm')";
-        $rows = $dbFnbr->select($cmd, []);
+where (tablename='objectsentencemm') or (tablename='staticannotationmm')");
+
         $lastAnnotationTime = is_object($rows[0]) ? $rows[0]->lastAnnotationTime : $rows[0]['lastAnnotationTime'];
-        $dbDaisy = PersistenceManager::$capsule->connection('daisy');
-        $cmd = "SELECT max(timeLastUpdate) as lastUpdateTime
+
+//        $dbDaisy = PersistenceManager::$capsule->connection('daisy');
+//        $cmd = "SELECT max(timeLastUpdate) as lastUpdateTime
+//         FROM dashboard
+//";
+//        $rows = $dbDaisy->select($cmd, []);
+        $rows = DB::connection('daisy')->select("SELECT max(timeLastUpdate) as lastUpdateTime
          FROM dashboard
-";
-        $rows = $dbDaisy->select($cmd, []);
+");
+
         $lastUpdateTime = is_object($rows[0]) ? $rows[0]->lastUpdateTime : $rows[0]['lastUpdateTime'];
         return $lastAnnotationTime > $lastUpdateTime;
     }

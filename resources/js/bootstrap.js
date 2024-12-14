@@ -30,3 +30,20 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+// import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
+// setBasePath('/');
+//
+// import '@shoelace-style/shoelace/dist/components/icon/icon.js';
+// import '@shoelace-style/shoelace/dist/components/drawer/drawer.js';
+
+
+
+
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allow your team to quickly build robust real-time web applications.
+ */
+
+//import './echo';
