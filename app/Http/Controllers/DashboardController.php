@@ -21,17 +21,31 @@ class DashboardController extends Controller
         $lang = AppService::getCurrentLanguageCode();
         App::setLocale($lang);
         session(['currentController' => "Reinventa"]);
-//        if (DashboardService::mustCalculate()) {
+        if (DashboardService::mustCalculate()) {
+        //if (true) {
             $frame2 = DashboardService::frame2();
-//            $audition = DashboardService::audition();
-//            $multi30k = DashboardService::multi30k();
-//            DashboardService::updateTable($this->data);
-//        } else {
-//            DashboardService::getFromTable($this->data);
-//            $multi30k['chart'] = DashboardService::multi30kChart();
-//        }
+            $audition = DashboardService::audition();
+            $audition['origin'] = DashboardService::auditionOrigin();
+            $multi30k = DashboardService::multi30k();
+            $data = (object)[
+                'frame2' => $frame2,
+                'audition' => $audition,
+                'multi30k' => $multi30k,
+            ];
+            DashboardService::updateTable($data);
+        } else {
+            $data = (object)[];
+            DashboardService::getFromTable($data);
+            $audition = $data->audition;
+            $frame2 = $data->frame2;
+            $multi30k = $data->multi30k;
+            $audition['origin'] = DashboardService::auditionOrigin();
+            $multi30k['chart'] = DashboardService::multi30kChart();
+        }
         return view('Dashboard.main',[
-            'frame2' => $frame2
+            'frame2' => $frame2,
+            'audition' => $audition,
+            'multi30k' => $multi30k,
         ]);
     }
 

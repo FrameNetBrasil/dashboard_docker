@@ -10,14 +10,14 @@
             <div class="dashboard-title">{{ __("dashboard.subcorpus") }}: Frame2</div>
             @include('Dashboard.subcorporaFrame2')
 
-            {{--            <div class="dashboard-title">{{ config("webtool.dashboard.{$language}.subcorpus") }}: Audition</div>--}}
-            {{--            @include('Dashboard.subcorporaAudition')--}}
+            <div class="dashboard-title">{{ __("dashboard.subcorpus") }}: Audition</div>
+            @include('Dashboard.subcorporaAudition')
 
-            {{--            <div class="dashboard-title">{{ config("webtool.dashboard.{$language}.subcorpus") }}: Framed Multi30k</div>--}}
-            {{--            @include('Dashboard.subcorporaMulti30k')--}}
+            <div class="dashboard-title">{{ __("dashboard.subcorpus") }}: Framed Multi30k</div>
+            @include('Dashboard.subcorporaMulti30k')
 
-            {{--            <div class="dashboard-title">{{ config("webtool.dashboard.{$language}.annotatorProfile") }}</div>--}}
-            {{--            @include('Dashboard.annotatorProfile')--}}
+            <div class="dashboard-title">{{__('dashboard.annotatorProfile')}}</div>
+            @include('Dashboard.annotatorProfile')
 
         </div>
     </x-slot:main>

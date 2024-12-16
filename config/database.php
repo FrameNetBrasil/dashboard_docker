@@ -70,11 +70,11 @@ return [
             'driver' => 'mariadb',
             //'platform' => 'pdo_mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_37_HOST', 'x'),
-            'port' => env('DB_37_PORT', ''),
-            'database' => env('DB_37_DATABASE', 'forge'),
-            'username' => env('DB_37_USERNAME', 'forge'),
-            'password' => env('DB_37_PASSWORD', ''),
+            'host' => env('DB_HOST_37', 'x'),
+            'port' => env('DB_PORT_37', ''),
+            'database' => env('DB_DATABASE_37', 'forge'),
+            'username' => env('DB_USERNAME_37', 'forge'),
+            'password' => env('DB_PASSWORD_37', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -99,6 +99,36 @@ return [
 //            ]) : [
 //                \PDO::ATTR_EMULATE_PREPARES => true
 //            ],
+        ],
+
+        'daisy' => [
+            'driver' => 'mariadb',
+            //'platform' => 'pdo_mysql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST_DAISY', 'x'),
+            'port' => env('DB_PORT_DAISY', ''),
+            'database' => env('DB_DATABASE_DAISY', 'forge'),
+            'username' => env('DB_USERNAME_DAISY', 'forge'),
+            'password' => env('DB_PASSWORD_DAISY', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'formatDate' => '%e/%m/%Y',
+            'formatDateWhere' => '%Y/%m/%e',
+            'formatTime' => '%T',
+            'sequence' => [
+                'table' => 'Sequence',
+                'name' => 'Name',
+                'value' => 'Value'
+            ],
+            'configurationClass' => 'Doctrine\DBAL\Configuration',
+            'options' => [
+                \PDO::ATTR_EMULATE_PREPARES => true
+            ]
         ],
 
         'sqlite' => [

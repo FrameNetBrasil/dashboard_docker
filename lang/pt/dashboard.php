@@ -1,10 +1,12 @@
 <?php
 return [
     'subcorpus' => 'Subcorpus',
-    'annotatorProfile' => 'Annotator profile',
+    'annotatorProfile' => 'Perfil do anotador',
     'textualAnnotation' => "Anotação de Texto",
     'videoAnnotation' => 'Anotação de Vídeo',
     'imageAnnotation' => 'Anotação de Imagem',
+    'origin' => 'Origem',
+    'sentences' => 'Sentenças',
     'averages' => 'Médias',
     'ptt' => "PTT: Tradução para Português",
     'pto' => "PTO: Português Original",
@@ -53,5 +55,11 @@ return [
         'used_by',
         'used_for'
     ],
-    'profileQualia' => 'Relation types'
+    'profileQualia' => 'Relation types',
+    'origin_Audio description' => 'Audiodescrição',
+    'origin_Closed caption(CC)' => 'Closed caption(CC)',
+    'origin_Original audio' => 'Áudio original',
+    'origin_Subtitle' => 'Legenda',
+    'origin_Text overlay' => 'Sobreposição de texto',
+
 ];
