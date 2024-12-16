@@ -182,6 +182,7 @@ class DashboardService //extends AppService
     // Frame2
     //
 
+    /*
     private static function getSentencesFrame2($query)
     {
         $query->from("view_document_sentence as ds")
@@ -192,6 +193,7 @@ class DashboardService //extends AppService
                 'crp_pedro_pelo_mundo'
             ]);
     }
+
 
     public static function frame2(): array
     {
@@ -297,11 +299,117 @@ class DashboardService //extends AppService
         $result['avgDuration'] = number_format($avg, 3, $decimal, '');
         return $result;
     }
+    */
+
+
+    public static function frame2(): array
+    {
+        $result = [];
+        $corpora = [
+            'crp_pedro_pelo_mundo'
+        ];
+        $count0 = Criteria::table("annotationset as a")
+            ->join("view_document_sentence as ds", "a.idSentence", "=", "ds.idSentence")
+            ->join("document as d", "ds.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where("c.entry", "IN", $corpora)
+            ->selectRaw("count(distinct a.idSentence) as nSentence")
+            ->selectRaw("count(*) as nAS")
+            ->selectRaw("count(distinct a.idLU) as nLU")
+            ->all();
+        $result['sentences'] = $count0[0]->nSentence;
+        $result['asText'] = $count0[0]->nAS;
+        $result['lusText'] = $count0[0]->nLU;
+        $count1 = Criteria::table("view_video_dynamicobject as vd")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("dynamicobject as do", "vd.idDynamicObject", "=", "do.idDynamicObject")
+            ->join("view_annotation as a", "do.idAnnotationObject", "=", "a.idAnnotationObject")
+            ->join("frameelement as fe", "a.idEntity", "=", "fe.idEntity")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->selectRaw("count(distinct do.idDynamicObject) as n")
+            ->all();
+        $result['bbox'] = $count1[0]->n;
+        $count2 = Criteria::table("view_annotation_text_fe as afe")
+            ->join("annotationset as a", "afe.idAnnotationSet", "=", "a.idAnnotationSet")
+            ->join("view_document_sentence as ds", "a.idSentence", "=", "ds.idSentence")
+            ->join("document as d", "ds.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where("c.entry", "IN", $corpora)
+            ->join("frameelement as fe", "afe.idFrameElement", "=", "fe.idFrameElement")
+            ->selectRaw("count(distinct fe.idFrame) as n")
+            ->all();
+        $count3 = Criteria::table("view_video_dynamicobject as vd")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("dynamicobject as do", "vd.idDynamicObject", "=", "do.idDynamicObject")
+            ->join("view_annotation as a", "do.idAnnotationObject", "=", "a.idAnnotationObject")
+            ->join("frameelement as fe", "a.idEntity", "=", "fe.idEntity")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->selectRaw("count(distinct fe.idFrame) as n")
+            ->all();
+        $result['framesText'] = $count2[0]->n;
+        $result['framesBBox'] = $count3[0]->n;
+        $count4 = Criteria::table("view_annotation_text_fe as afe")
+            ->join("annotationset as a", "afe.idAnnotationSet", "=", "a.idAnnotationSet")
+            ->join("view_document_sentence as ds", "a.idSentence", "=", "ds.idSentence")
+            ->join("document as d", "ds.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where("c.entry", "IN", $corpora)
+            ->selectRaw("count(distinct afe.idFrameElement) as n")
+            ->all();
+        $count5 = Criteria::table("view_video_dynamicobject as vd")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("dynamicobject as do", "vd.idDynamicObject", "=", "do.idDynamicObject")
+            ->join("view_annotation as a", "do.idAnnotationObject", "=", "a.idAnnotationObject")
+            ->join("frameelement as fe", "a.idEntity", "=", "fe.idEntity")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->selectRaw("count(distinct fe.idFrameElement) as n")
+            ->all();
+        $result['fesText'] = $count4[0]->n;
+        $result['fesBBox'] = $count5[0]->n;
+
+        $count6 = Criteria::table("view_video_dynamicobject as vd")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("dynamicobject as do", "vd.idDynamicObject", "=", "do.idDynamicObject")
+            ->join("view_annotation as a", "do.idAnnotationObject", "=", "a.idAnnotationObject")
+            ->join("lu", "a.idEntity", "=", "lu.idEntity")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->selectRaw("count(distinct lu.idLU) as n")
+            ->all();
+        $result['lusBBox'] = $count6[0]->n;
+
+        $decimal = (App::currentLocale() == 'pt') ? ',' : '.';
+        $result['avgAS'] = number_format($result['asText'] / $result['sentences'], 3, $decimal, '');
+        $count7 = Criteria::table("view_dynamicobject_boundingbox as bb")
+            ->join("view_video_dynamicobject as vd", "bb.idDynamicObject", "=", "vd.idDynamicObject")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->groupBy("bb.idDynamicObject")
+            ->selectRaw("count(*) as n")
+            ->all();
+        $sum = 0;
+        foreach ($count7 as $row) {
+            $sum += $row->n;
+        }
+        $avg = ($sum / count($count7)) * 0.040; // 40 ms por frame
+        $result['avgDuration'] = number_format($avg, 3, $decimal, '');
+        return $result;
+    }
 
     //
     // Audition
     //
 
+    /*
     private static function getSentencesAudition()
     {
         return SentenceModel::getCriteria()
@@ -374,6 +482,134 @@ class DashboardService //extends AppService
         $result['avgDuration'] = number_format($avg, 3, $decimal, '');
         return $result;
     }
+    */
+
+    public static function audition(): array
+    {
+        $result = [];
+        $corpora = [
+            'crp_curso_dataset', // audition
+            'crp_hoje_eu_nao_quero', // Curta-metragem_ENQVS
+            'crp_ad alternativa curta_hoje_eu_não_quero', //Audiodescrição_alternativa_ENQVS
+        ];
+        $count0 = Criteria::table("annotationset as a")
+            ->join("view_document_sentence as ds", "a.idSentence", "=", "ds.idSentence")
+            ->join("document as d", "ds.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where("c.entry", "IN", $corpora)
+            ->selectRaw("count(distinct a.idSentence) as nSentence")
+            ->selectRaw("count(*) as nAS")
+            ->selectRaw("count(distinct a.idLU) as nLU")
+            ->all();
+        $result['sentences'] = $count0[0]->nSentence;
+        $result['asText'] = $count0[0]->nAS;
+        $result['lusText'] = $count0[0]->nLU;
+        $count1 = Criteria::table("view_video_dynamicobject as vd")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("dynamicobject as do", "vd.idDynamicObject", "=", "do.idDynamicObject")
+            ->join("view_annotation as a", "do.idAnnotationObject", "=", "a.idAnnotationObject")
+            ->join("frameelement as fe", "a.idEntity", "=", "fe.idEntity")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->selectRaw("count(distinct do.idDynamicObject) as n")
+            ->all();
+        $result['bbox'] = $count1[0]->n;
+        $count2 = Criteria::table("view_annotation_text_fe as afe")
+            ->join("annotationset as a", "afe.idAnnotationSet", "=", "a.idAnnotationSet")
+            ->join("view_document_sentence as ds", "a.idSentence", "=", "ds.idSentence")
+            ->join("document as d", "ds.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where("c.entry", "IN", $corpora)
+            ->join("frameelement as fe", "afe.idFrameElement", "=", "fe.idFrameElement")
+            ->selectRaw("count(distinct fe.idFrame) as n")
+            ->all();
+        $count3 = Criteria::table("view_video_dynamicobject as vd")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("dynamicobject as do", "vd.idDynamicObject", "=", "do.idDynamicObject")
+            ->join("view_annotation as a", "do.idAnnotationObject", "=", "a.idAnnotationObject")
+            ->join("frameelement as fe", "a.idEntity", "=", "fe.idEntity")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->selectRaw("count(distinct fe.idFrame) as n")
+            ->all();
+        $result['framesText'] = $count2[0]->n;
+        $result['framesBBox'] = $count3[0]->n;
+        $count4 = Criteria::table("view_annotation_text_fe as afe")
+            ->join("annotationset as a", "afe.idAnnotationSet", "=", "a.idAnnotationSet")
+            ->join("view_document_sentence as ds", "a.idSentence", "=", "ds.idSentence")
+            ->join("document as d", "ds.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where("c.entry", "IN", $corpora)
+            ->selectRaw("count(distinct afe.idFrameElement) as n")
+            ->all();
+        $count5 = Criteria::table("view_video_dynamicobject as vd")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("dynamicobject as do", "vd.idDynamicObject", "=", "do.idDynamicObject")
+            ->join("view_annotation as a", "do.idAnnotationObject", "=", "a.idAnnotationObject")
+            ->join("frameelement as fe", "a.idEntity", "=", "fe.idEntity")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->selectRaw("count(distinct fe.idFrameElement) as n")
+            ->all();
+        $result['fesText'] = $count4[0]->n;
+        $result['fesBBox'] = $count5[0]->n;
+
+        $count6 = Criteria::table("view_video_dynamicobject as vd")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("dynamicobject as do", "vd.idDynamicObject", "=", "do.idDynamicObject")
+            ->join("view_annotation as a", "do.idAnnotationObject", "=", "a.idAnnotationObject")
+            ->join("lu", "a.idEntity", "=", "lu.idEntity")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->selectRaw("count(distinct lu.idLU) as n")
+            ->all();
+        $result['lusBBox'] = $count6[0]->n;
+
+        $decimal = (App::currentLocale() == 'pt') ? ',' : '.';
+        $result['avgAS'] = number_format($result['asText'] / $result['sentences'], 3, $decimal, '');
+        $count7 = Criteria::table("view_dynamicobject_boundingbox as bb")
+            ->join("view_video_dynamicobject as vd", "bb.idDynamicObject", "=", "vd.idDynamicObject")
+            ->join("view_document_video as dv", "vd.idVideo", "=", "dv.idVideo")
+            ->join("document as d", "dv.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->groupBy("bb.idDynamicObject")
+            ->selectRaw("count(*) as n")
+            ->all();
+        $sum = 0;
+        foreach ($count7 as $row) {
+            $sum += $row->n;
+        }
+        $avg = ($sum / count($count7)) * 0.040; // 40 ms por frame
+        $result['avgDuration'] = number_format($avg, 3, $decimal, '');
+
+        return $result;
+    }
+
+    public static function auditionOrigin(): array
+    {
+        $corpora = [
+            'crp_curso_dataset', // audition
+            'crp_hoje_eu_nao_quero', // Curta-metragem_ENQVS
+            'crp_ad alternativa curta_hoje_eu_não_quero', //Audiodescrição_alternativa_ENQVS
+        ];
+        $count8 = Criteria::table("sentence as s")
+            ->join("originmm as o", "s.idOriginMM", "=", "o.idOriginMM")
+            ->join("view_document_sentence as ds", "s.idSentence", "=", "ds.idSentence")
+            ->join("document as d", "ds.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where("c.entry", "IN", $corpora)
+            ->groupBy("o.origin")
+            ->selectRaw("o.origin")
+            ->selectRaw("count(*) as nOrigin")
+            ->all();
+
+        return $count8;
+    }
 
     //
     // Multi30k
@@ -382,51 +618,40 @@ class DashboardService //extends AppService
     public static function multi30k(): array
     {
         $result = [];
-        $count = StaticAnnotationMMModel::getCriteria()
-            ->where('staticObjectSentenceMM.staticSentenceMM.sentence.documents.corpus.entry', 'IN', [
-                'crp_oficina_com_sentenca_1',
-                'crp_oficina_com_sentenca_2',
-                'crp_oficina_com_sentenca_3',
-                'crp_oficina_com_sentenca_4',
-                'crp_oficina_sem_sentenca_1',
-                'crp_oficina_sem_sentenca_2',
-                'crp_oficina_sem_sentenca_3',
-                'crp_oficina_sem_sentenca_4',
-                'crp_corpus-prime-sem-sentença',
-                'crp_corpus-prime-com-sentença',
-            ])
-            ->where('idFrameElement', 'IS', 'NOT NULL')
-            ->get([
-//                "count(distinct staticObjectSentenceMM.idStaticSentenceMM) as n1",
-                "count(distinct idStaticObjectSentenceMM) as n2",
-                "count(distinct frameElement.idFrame) as n3",
-                "count(distinct idFrameElement) as n4"
-            ]);
-        $count2 = StaticObjectSentenceMMModel::getCriteria()
-            ->where('staticSentenceMM.sentence.documents.corpus.entry', 'IN', [
-                'crp_oficina_com_sentenca_1',
-                'crp_oficina_com_sentenca_2',
-                'crp_oficina_com_sentenca_3',
-                'crp_oficina_com_sentenca_4',
-                'crp_oficina_sem_sentenca_1',
-                'crp_oficina_sem_sentenca_2',
-                'crp_oficina_sem_sentenca_3',
-                'crp_oficina_sem_sentenca_4',
-                'crp_corpus-prime-sem-sentença',
-                'crp_corpus-prime-com-sentença',
-            ])
-            ->where('staticAnnotationMM.idFrameElement', 'IS', 'NOT NULL')
-            ->get([
-                "count(distinct idStaticSentenceMM) as n1",
-            ]);
-        $result['images'] = $count2[0]['n1'];
-        $result['bbox'] = $count[0]['n2'];
-        $result['framesImage'] = $count[0]['n3'];
-        $result['fesImage'] = $count[0]['n4'];
+        $corpora = [
+            'crp_oficina_com_sentenca_1',
+            'crp_oficina_com_sentenca_2',
+            'crp_oficina_com_sentenca_3',
+            'crp_oficina_com_sentenca_4',
+            'crp_oficina_sem_sentenca_1',
+            'crp_oficina_sem_sentenca_2',
+            'crp_oficina_sem_sentenca_3',
+            'crp_oficina_sem_sentenca_4',
+            'crp_corpus-prime-sem-sentença',
+            'crp_corpus-prime-com-sentença',
+        ];
+        Criteria::$database = 'webtool37';
+        $count = Criteria::table("staticannotationmm as sa")
+            ->join("frameelement as fe", "sa.idFrameElement", "=", "fe.idFrameElement")
+            ->join("staticobjectsentencemm as sos", "sa.idStaticObjectSentenceMM", "=", "sos.idStaticObjectSentenceMM")
+            ->join("staticsentencemm as ss", "sos.idStaticSentenceMM", "=", "ss.idStaticSentenceMM")
+            ->join("document_sentence as ds", "ss.idDocument", "=", "ds.idDocument")
+            ->join("document as d", "ds.idDocument", "=", "d.idDocument")
+            ->join("corpus as c", "d.idCorpus", "=", "c.idCorpus")
+            ->where('c.entry', 'IN', $corpora)
+            ->whereNotNull('sa.idFrameElement')
+            ->selectRaw("count(distinct ss.idStaticSentenceMM) as n1")
+            ->selectRaw("count(distinct sos.idStaticObjectSentenceMM) as n2")
+            ->selectRaw("count(distinct fe.idFrame) as n3")
+            ->selectRaw("count(distinct fe.idFrameElement) as n4")
+            ->all();
+        $result['images'] = $count[0]->n1;
+        $result['bbox'] = $count[0]->n2;
+        $result['framesImage'] = $count[0]->n3;
+        $result['fesImage'] = $count[0]->n4;
         $result['lusImage'] = 0;
 
-        ////
-        $dbDaisy = PersistenceManager::$capsule->connection('daisy');
+        $dbDaisy = DB::connection('daisy');
         // PTT
         $cmd = "select count(*) as n from flickr30ksentence where idDocumentFNBr = 1054 ";
         $count = $dbDaisy->select($cmd, []);
@@ -457,31 +682,13 @@ join flickr30ksentence f on (l.idFlickr30KSentence = f.idFlickr30KSentence)
 where f.idDocumentFNBr = 663";
         $count = $dbDaisy->select($cmd, []);
         $result['enoFrames'] = $count[0]->n;
-        // Chart
-//        $dbFnbr = PersistenceManager::$capsule->connection('fnbr');
-//        $cmd = "SELECT year(tlDateTime) y, month(tlDateTime) m, count(*) n
-//         FROM fnbr_db.timeline t
-//where (tablename='objectsentencemm') or (tablename='staticannotationmm')
-//group by year(tlDateTime),month(tlDateTime)
-//order by 1,2;";
-//        $rows = $dbFnbr->select($cmd, []);
-//        $chart = [];
-//        $sum = 0;
-//        foreach ($rows as $row) {
-//            $sum += $row['n'];
-//            $chart[] = [
-//                'm' => $row['m'] . '/' . $row['y'],
-//                'value' => $sum
-//            ];
-//        }
-//        //$chart[count($chart) - 1]['value'] = $result['bbox'];
         $result['chart'] = self::multi30kChart();
         return $result;
     }
 
     public static function multi30kChart(): array
     {
-        $dbFnbr = PersistenceManager::$capsule->connection('fnbr');
+        $dbFnbr = DB::connection('webtool37');
         $cmd = "SELECT year(tlDateTime) y, month(tlDateTime) m, count(*) n
          FROM fnbr_db.timeline t
 where (tablename='objectsentencemm') or (tablename='staticannotationmm')
@@ -495,7 +702,7 @@ order by 1,2;";
             $m = is_object($row) ? $row->m : $row['m'];
             $y = is_object($row) ? $row->y : $row['y'];
             $chart[] = [
-                'm' => $m. '/' . $y,
+                'm' => $m . '/' . $y,
                 'value' => $sum
             ];
         }
@@ -504,7 +711,7 @@ order by 1,2;";
 
     public static function updateTable($data)
     {
-        $dbDaisy = PersistenceManager::$capsule->connection('daisy');
+        $dbDaisy = DB::connection('daisy');
         $now = date('Y-m-d H:i:s');
         $frame2_avg_sentence = str_replace(',', '.', $data->frame2['avgDuration']);
         $frame2_avg_obj = str_replace(',', '.', $data->frame2['avgAS']);
@@ -551,27 +758,17 @@ order by 1,2;";
 
     public static function mustCalculate(): bool
     {
-//        $dbFnbr = PersistenceManager::$capsule->connection('fnbr');
-//        $cmd = "SELECT max(tlDateTime) as lastAnnotationTime
-//         FROM fnbr_db.timeline t
-//where (tablename='objectsentencemm') or (tablename='staticannotationmm')";
-//        $rows = $dbFnbr->select($cmd, []);
+        $dbFnbr = DB::connection('webtool37');
 
-        $rows = DB::connection('fnbr')->select("SELECT max(tlDateTime) as lastAnnotationTime
+        $rows = $dbFnbr->select("SELECT max(tlDateTime) as lastAnnotationTime
          FROM fnbr_db.timeline t
 where (tablename='objectsentencemm') or (tablename='staticannotationmm')");
-
         $lastAnnotationTime = is_object($rows[0]) ? $rows[0]->lastAnnotationTime : $rows[0]['lastAnnotationTime'];
 
-//        $dbDaisy = PersistenceManager::$capsule->connection('daisy');
-//        $cmd = "SELECT max(timeLastUpdate) as lastUpdateTime
-//         FROM dashboard
-//";
-//        $rows = $dbDaisy->select($cmd, []);
-        $rows = DB::connection('daisy')->select("SELECT max(timeLastUpdate) as lastUpdateTime
+        $dbDaisy = DB::connection('daisy');
+        $rows = $dbDaisy->select("SELECT max(timeLastUpdate) as lastUpdateTime
          FROM dashboard
 ");
-
         $lastUpdateTime = is_object($rows[0]) ? $rows[0]->lastUpdateTime : $rows[0]['lastUpdateTime'];
         return $lastAnnotationTime > $lastUpdateTime;
     }
@@ -579,7 +776,7 @@ where (tablename='objectsentencemm') or (tablename='staticannotationmm')");
     public static function getFromTable($data)
     {
         $decimal = (App::currentLocale() == 'pt') ? ',' : '.';
-        $dbDaisy = PersistenceManager::$capsule->connection('daisy');
+        $dbDaisy = DB::connection('daisy');
         $cmd = "SELECT * FROM dashboard where (idDashBoard = 1)";
         $rows = $dbDaisy->select($cmd, []);
         $fields = $rows[0];
