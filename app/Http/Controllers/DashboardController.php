@@ -21,31 +21,51 @@ class DashboardController extends Controller
         $lang = AppService::getCurrentLanguageCode();
         App::setLocale($lang);
         session(['currentController' => "Reinventa"]);
-        if (DashboardService::mustCalculate()) {
+        //if (DashboardService::mustCalculate()) {
         //if (true) {
-            $frame2 = DashboardService::frame2();
-            $audition = DashboardService::audition();
-            $audition['origin'] = DashboardService::auditionOrigin();
-            $multi30k = DashboardService::multi30k();
-            $data = (object)[
-                'frame2' => $frame2,
-                'audition' => $audition,
-                'multi30k' => $multi30k,
-            ];
-            DashboardService::updateTable($data);
-        } else {
+//            $frame2 = DashboardService::frame2();
+//            $frame2PPM = DashboardService::frame2PPM();
+//            $frame2NLG = DashboardService::frame2NLG();
+//            $frame2Gesture = DashboardService::frame2Gesture();
+//            $audition = DashboardService::audition();
+//            $audition['origin'] = DashboardService::auditionOrigin();
+//            $multi30k = DashboardService::multi30k();
+//            $multi30kEntity = DashboardService::multi30kEntity();
+//            $multi30kEvent = DashboardService::multi30kEvent();
+//            $data = (object)[
+//                'frame2' => $frame2,
+//                'frame2PPM' => $frame2PPM,
+//                'frame2NLG' => $frame2NLG,
+//                'frame2Gesture' => $frame2Gesture,
+//                'audition' => $audition,
+//                'multi30k' => $multi30k,
+//                'multi30kEntity' => $multi30kEntity,
+//                'multi30kEvent' => $multi30kEvent,
+//            ];
+//            DashboardService::updateTable($data);
+//        } else {
             $data = (object)[];
             DashboardService::getFromTable($data);
             $audition = $data->audition;
             $frame2 = $data->frame2;
+            $frame2PPM = $data->frame2PPM;
+            $frame2NLG = $data->frame2NLG;
+            $frame2Gesture = $data->frame2Gesture;
             $multi30k = $data->multi30k;
+            $multi30kEntity = $data->multi30kEntity;
+            $multi30kEvent = $data->multi30kEvent;
             $audition['origin'] = DashboardService::auditionOrigin();
             $multi30k['chart'] = DashboardService::multi30kChart();
-        }
+//        }
         return view('Dashboard.main',[
             'frame2' => $frame2,
+            'frame2PPM' => $frame2PPM,
+            'frame2NLG' => $frame2NLG,
+            'frame2Gesture' => $frame2Gesture,
             'audition' => $audition,
             'multi30k' => $multi30k,
+            'multi30kEntity' => $multi30kEntity,
+            'multi30kEvent' => $multi30kEvent,
         ]);
     }
 

@@ -1,6 +1,7 @@
 <?php
 return [
     'subcorpus' => 'Subcorpus',
+    'totals' => 'Total',
     'annotatorProfile' => 'Annotator profile',
     'textualAnnotation' => "Textual Annotation",
     'videoAnnotation' => 'Video Annotation',
