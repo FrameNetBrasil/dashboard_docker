@@ -3,25 +3,25 @@
     <div class="dashboard-card  dashboard-card1">
         <div class="header">{{__('dashboard.annotatedImages')}}</div>
         <div class="body">
-            {{$multi30k['images']}}
+            {{$multi30kEntity['images']}}
         </div>
     </div>
     <div class="dashboard-card  dashboard-card2">
         <div class="header">{{__('dashboard.annotatedBBox')}}</div>
         <div class="body">
-            {{$multi30k['bbox']}}
+            {{$multi30kEntity['bbox']}}
         </div>
     </div>
     <div class="dashboard-card  dashboard-card3">
         <div class="header">{{__('dashboard.frames')}}</div>
         <div class="body">
-            {{$multi30k['framesImage']}}
+            {{$multi30kEntity['framesImage']}}
         </div>
     </div>
     <div class="dashboard-card  dashboard-card4">
         <div class="header">{{__('dashboard.fes')}}</div>
         <div class="body">
-            {{$multi30k['fesImage']}}
+            {{$multi30kEntity['fesImage']}}
         </div>
     </div>
 </div>
